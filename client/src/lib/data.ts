@@ -57,6 +57,9 @@ import advocator4 from "@assets/image_1769611208858.png";
 import advocator5 from "@assets/image_1769611222492.png";
 import advocator6 from "@assets/image_1769611237519.png";
 
+import webChange1 from "@assets/image_1769611314155.png";
+import webChange2 from "@assets/image_1769611322447.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -359,6 +362,35 @@ export const projects: Project[] = [
           "15.4% cite Loyalty Points as differentiator",
           "45% see People's Trust as biggest difference vs competitors",
           "44% of traders found on X/Twitter platform"
+        ]
+      }
+    ]
+  },
+  {
+    id: "8",
+    title: "Website Change Effects Analysis",
+    problem: "Measuring the impact of website changes on user acquisition, engagement, and conversion metrics across partner firms.",
+    tools: ["A/B Testing", "GA4", "Data Visualization", "Trend Analysis", "BigQuery"],
+    impact: "Quantified website change impact: tracked XX% change in new users and checkout behavior across futures firms with before/after comparison.",
+    category: "Business Intelligence",
+    previewImages: [webChange1, webChange2],
+    previewSections: [
+      {
+        title: "My Funded Futures Analysis",
+        content: [
+          "New Users Before: 766 users over 28-day period",
+          "New Users After: 698 users (-8.88% change)",
+          "Daily data matched on weekends for accurate comparison",
+          "Trend analysis showing before/after website change patterns"
+        ]
+      },
+      {
+        title: "Cross-Firm Impact Comparison",
+        content: [
+          "Alpha Futures: Visits +7.34%, New Users +41.44%, Checkouts -63.71%",
+          "Apex: Visits -23.85%, New Users -6.83%, Checkouts +13.25%",
+          "Topstep: Visits +54.03%, New Users +41.44%, Checkouts -36.26%",
+          "Comparative analysis enabling strategic recommendations"
         ]
       }
     ]
