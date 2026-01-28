@@ -1,5 +1,14 @@
 import type { Project, Experience, Skill } from "@shared/schema";
 
+import dashboard1 from "@assets/image_1769597107301.png";
+import dashboard2 from "@assets/image_1769597144371.png";
+import dashboard3 from "@assets/image_1769597205364.png";
+import dashboard4 from "@assets/image_1769597222904.png";
+import dashboard5 from "@assets/image_1769597260688.png";
+import dashboard6 from "@assets/image_1769597284262.png";
+import dashboard7 from "@assets/image_1769597366378.png";
+import dashboard8 from "@assets/image_1769597408170.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -146,48 +155,48 @@ export const dashboards = [
     id: "1",
     title: "Revenue Health Dashboard",
     description: "Total revenue, net revenue, payouts tracking with revenue vs payouts trends",
-    image: "/attached_assets/image_1769597107301.png"
+    image: dashboard1
   },
   {
     id: "2",
     title: "Analytics Dashboard",
     description: "Traffic & conversion metrics, commission revenue tracking across channels",
-    image: "/attached_assets/image_1769597144371.png"
+    image: dashboard2
   },
   {
     id: "3",
     title: "Survey Trends",
     description: "Tracking survey responses over time with discovery source analysis",
-    image: "/attached_assets/image_1769597205364.png"
+    image: dashboard3
   },
   {
     id: "4",
     title: "Survey Responses Analysis",
     description: "Comprehensive survey analytics with nationality, visitor type, and trading experience",
-    image: "/attached_assets/image_1769597222904.png"
+    image: dashboard4
   },
   {
     id: "5",
     title: "Members Analytics",
     description: "User challenges, daily activity tracking, and investment breakdown",
-    image: "/attached_assets/image_1769597260688.png"
+    image: dashboard5
   },
   {
     id: "6",
     title: "Payouts & User Analytics",
     description: "Payouts tracking with page visits and user engagement metrics",
-    image: "/attached_assets/image_1769597284262.png"
+    image: dashboard6
   },
   {
     id: "7",
     title: "Multi-Stat Comparer",
     description: "Compare metrics across prop firms with commission and visits analysis",
-    image: "/attached_assets/image_1769597366378.png"
+    image: dashboard7
   },
   {
     id: "8",
     title: "TrackNow Dashboard",
     description: "Commission tracking with first order vs recurring breakdown and top earning firms",
-    image: "/attached_assets/image_1769597408170.png"
+    image: dashboard8
   }
 ];
