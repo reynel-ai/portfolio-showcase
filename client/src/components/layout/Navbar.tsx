@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -19,12 +19,27 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [highlightStyle, setHighlightStyle] = useState({ left: 0, width: 0 });
 
   const getActiveIndex = () => {
-    return navLinks.findIndex(link => link.href === location);
+    const idx = navLinks.findIndex(link => link.href === location);
+    return idx >= 0 ? idx : 0;
   };
 
   const currentIndex = hoveredIndex !== null ? hoveredIndex : getActiveIndex();
+
+  useEffect(() => {
+    const link = linkRefs.current[currentIndex];
+    if (link && navRef.current) {
+      const navRect = navRef.current.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      setHighlightStyle({
+        left: linkRect.left - navRect.left,
+        width: linkRect.width,
+      });
+    }
+  }, [currentIndex]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -48,7 +63,8 @@ export function Navbar() {
               <Link 
                 key={link.href} 
                 href={link.href}
-                className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 relative z-10 ${
+                ref={(el: HTMLAnchorElement | null) => { linkRefs.current[index] = el; }}
+                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors duration-300 relative z-10 ${
                   currentIndex === index
                     ? "text-white"
                     : "text-muted-foreground"
@@ -60,13 +76,12 @@ export function Navbar() {
               </Link>
             ))}
             <div 
-              className="absolute h-8 bg-primary rounded-md transition-all duration-300 ease-out -z-0"
+              className="absolute h-8 bg-primary rounded-md transition-all duration-300 ease-out"
               style={{
-                width: navLinks[currentIndex >= 0 ? currentIndex : 0]?.label.length * 9 + 24 + 'px',
-                left: `${navLinks.slice(0, currentIndex >= 0 ? currentIndex : 0).reduce((acc, link) => acc + link.label.length * 9 + 32, 0)}px`,
+                width: highlightStyle.width,
+                left: highlightStyle.left,
                 top: '50%',
                 transform: 'translateY(-50%)',
-                opacity: currentIndex >= 0 ? 1 : 1,
               }}
             />
           </div>
