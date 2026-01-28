@@ -44,6 +44,7 @@ export interface Project {
   tools: string[];
   impact: string;
   category: string;
+  previewImages?: string[];
   previewSections?: {
     title: string;
     content: string[];

@@ -9,6 +9,14 @@ import dashboard6 from "@assets/image_1769597284262.png";
 import dashboard7 from "@assets/image_1769597366378.png";
 import dashboard8 from "@assets/image_1769597408170.png";
 
+import septReview1 from "@assets/image_1769610412480.png";
+import septReview2 from "@assets/image_1769610432010.png";
+import septReview3 from "@assets/image_1769610449354.png";
+import septReview4 from "@assets/image_1769610476661.png";
+import septReview5 from "@assets/image_1769610497242.png";
+import septReview6 from "@assets/image_1769610508219.png";
+import septReview7 from "@assets/image_1769610525991.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -137,6 +145,7 @@ export const projects: Project[] = [
     tools: ["Statistical Modeling", "Looker Studio", "BigQuery", "Forecasting", "SQL"],
     impact: "Built point-system forecasting model achieving XX% accuracy, enabling proactive planning for seasonal variations and partner strategy.",
     category: "Data Science",
+    previewImages: [septReview1, septReview2, septReview3, septReview4, septReview5, septReview6, septReview7],
     previewSections: [
       {
         title: "Forecasting Model Design",

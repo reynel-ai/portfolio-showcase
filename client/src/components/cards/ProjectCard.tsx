@@ -2,7 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
-import { Eye, Lock } from "lucide-react";
+import { Eye, Lock, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import type { Project } from "@shared/schema";
 
 interface ProjectCardProps {
@@ -10,6 +11,26 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const hasImages = project.previewImages && project.previewImages.length > 0;
+  const hasPreview = hasImages || (project.previewSections && project.previewSections.length > 0);
+
+  const nextImage = () => {
+    if (hasImages) {
+      setCurrentImageIndex((prev) => 
+        prev === project.previewImages!.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (hasImages) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? project.previewImages!.length - 1 : prev - 1
+      );
+    }
+  };
+
   return (
     <Dialog>
       <Card className="h-full hover-elevate transition-all duration-300 group" data-testid={`card-project-${project.id}`}>
@@ -18,7 +39,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <Badge variant="secondary" className="text-xs" data-testid={`badge-category-${project.id}`}>
               {project.category}
             </Badge>
-            {project.previewSections && project.previewSections.length > 0 && (
+            {hasPreview && (
               <DialogTrigger asChild>
                 <Button 
                   variant="ghost" 
@@ -60,7 +81,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </CardContent>
       </Card>
       
-      <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             {project.title}
@@ -73,6 +94,66 @@ export function ProjectCard({ project }: ProjectCardProps) {
             Sensitive data has been redacted for confidentiality
           </DialogDescription>
         </DialogHeader>
+        
+        {hasImages && (
+          <div className="mt-4 space-y-3">
+            <div className="relative rounded-lg overflow-hidden bg-black/5 dark:bg-white/5">
+              <div className="relative">
+                <img 
+                  src={project.previewImages![currentImageIndex]} 
+                  alt={`${project.title} preview ${currentImageIndex + 1}`}
+                  className="w-full h-auto blur-[2px] hover:blur-none transition-all duration-300"
+                  data-testid={`img-preview-${project.id}`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+              </div>
+              
+              {project.previewImages!.length > 1 && (
+                <>
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full opacity-80 hover:opacity-100"
+                    onClick={prevImage}
+                    data-testid={`button-prev-image-${project.id}`}
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full opacity-80 hover:opacity-100"
+                    onClick={nextImage}
+                    data-testid={`button-next-image-${project.id}`}
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </>
+              )}
+            </div>
+            
+            {project.previewImages!.length > 1 && (
+              <div className="flex justify-center gap-1.5">
+                {project.previewImages!.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      idx === currentImageIndex 
+                        ? 'bg-primary' 
+                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                    }`}
+                    onClick={() => setCurrentImageIndex(idx)}
+                    data-testid={`button-dot-${project.id}-${idx}`}
+                  />
+                ))}
+              </div>
+            )}
+            
+            <p className="text-xs text-center text-muted-foreground italic">
+              Hover over image to view clearly. Data shown is for demonstration purposes.
+            </p>
+          </div>
+        )}
         
         {project.previewSections && (
           <div className="space-y-6 mt-4">
