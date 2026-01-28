@@ -144,32 +144,50 @@ export const skills: Skill[] = [
 export const dashboards = [
   {
     id: "1",
-    title: "Revenue Analytics Dashboard",
-    description: "Real-time revenue tracking and forecasting"
+    title: "Revenue Health Dashboard",
+    description: "Total revenue, net revenue, payouts tracking with revenue vs payouts trends",
+    image: "/attached_assets/image_1769597107301.png"
   },
   {
     id: "2",
-    title: "Sales Performance Dashboard",
-    description: "Comprehensive sales metrics and KPIs"
+    title: "Analytics Dashboard",
+    description: "Traffic & conversion metrics, commission revenue tracking across channels",
+    image: "/attached_assets/image_1769597144371.png"
   },
   {
     id: "3",
-    title: "Marketing Attribution Report",
-    description: "Multi-channel marketing ROI analysis"
+    title: "Survey Trends",
+    description: "Tracking survey responses over time with discovery source analysis",
+    image: "/attached_assets/image_1769597205364.png"
   },
   {
     id: "4",
-    title: "Customer Insights Dashboard",
-    description: "Survey results and customer feedback analysis"
+    title: "Survey Responses Analysis",
+    description: "Comprehensive survey analytics with nationality, visitor type, and trading experience",
+    image: "/attached_assets/image_1769597222904.png"
   },
   {
     id: "5",
-    title: "Executive KPI Dashboard",
-    description: "High-level business performance metrics"
+    title: "Members Analytics",
+    description: "User challenges, daily activity tracking, and investment breakdown",
+    image: "/attached_assets/image_1769597260688.png"
   },
   {
     id: "6",
-    title: "User Behavior Analysis",
-    description: "Conversion optimization and user journey tracking"
+    title: "Payouts & User Analytics",
+    description: "Payouts tracking with page visits and user engagement metrics",
+    image: "/attached_assets/image_1769597284262.png"
+  },
+  {
+    id: "7",
+    title: "Multi-Stat Comparer",
+    description: "Compare metrics across prop firms with commission and visits analysis",
+    image: "/attached_assets/image_1769597366378.png"
+  },
+  {
+    id: "8",
+    title: "TrackNow Dashboard",
+    description: "Commission tracking with first order vs recurring breakdown and top earning firms",
+    image: "/attached_assets/image_1769597408170.png"
   }
 ];

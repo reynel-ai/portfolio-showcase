@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { BarChart3, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface DashboardCardProps {
@@ -8,6 +8,7 @@ interface DashboardCardProps {
     id: string;
     title: string;
     description: string;
+    image?: string;
   };
 }
 
@@ -17,8 +18,15 @@ export function DashboardCard({ dashboard }: DashboardCardProps) {
       <Card className="h-full hover-elevate transition-all duration-300 group cursor-pointer" data-testid={`card-dashboard-${dashboard.id}`}>
         <CardContent className="p-0">
           <div className="aspect-video bg-gradient-to-br from-primary/10 via-accent/20 to-primary/5 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-            <BarChart3 className="h-16 w-16 text-primary/30" />
+            {dashboard.image ? (
+              <img 
+                src={dashboard.image} 
+                alt={dashboard.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+            )}
             <DialogTrigger asChild>
               <Button 
                 variant="secondary" 
@@ -42,18 +50,24 @@ export function DashboardCard({ dashboard }: DashboardCardProps) {
         </CardContent>
       </Card>
 
-      <DialogContent className="max-w-4xl">
+      <DialogContent className="max-w-5xl">
         <DialogHeader>
           <DialogTitle data-testid={`dialog-title-${dashboard.id}`}>{dashboard.title}</DialogTitle>
         </DialogHeader>
-        <div className="aspect-video bg-gradient-to-br from-primary/10 via-accent/20 to-primary/5 rounded-lg flex items-center justify-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-          <div className="text-center">
-            <BarChart3 className="h-24 w-24 text-primary/40 mx-auto mb-4" />
-            <p className="text-muted-foreground">Dashboard preview placeholder</p>
-            <p className="text-sm text-muted-foreground mt-1">{dashboard.description}</p>
-          </div>
+        <div className="rounded-lg overflow-hidden">
+          {dashboard.image ? (
+            <img 
+              src={dashboard.image} 
+              alt={dashboard.title}
+              className="w-full h-auto"
+            />
+          ) : (
+            <div className="aspect-video bg-gradient-to-br from-primary/10 via-accent/20 to-primary/5 flex items-center justify-center">
+              <p className="text-muted-foreground">Dashboard preview</p>
+            </div>
+          )}
         </div>
+        <p className="text-sm text-muted-foreground mt-2">{dashboard.description}</p>
       </DialogContent>
     </Dialog>
   );
