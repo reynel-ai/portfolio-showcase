@@ -34,7 +34,7 @@ export function HeroSection() {
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-800 dark:text-muted-foreground mb-4 font-semibold" data-testid="text-hero-headline">
-            Pioneering AI-Driven Analytics for Real World Application
+            Transforming Data Into Decisions That Drive Growth
           </p>
 
           <p className="text-lg text-gray-700 dark:text-muted-foreground mb-8 max-w-2xl font-medium" data-testid="text-hero-description">
