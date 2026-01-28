@@ -50,6 +50,13 @@ import commission4 from "@assets/image_1769611042105.png";
 import fintokei1 from "@assets/image_1769611078571.png";
 import fintokei2 from "@assets/image_1769611098113.png";
 
+import advocator1 from "@assets/image_1769611175539.png";
+import advocator2 from "@assets/image_1769611187776.png";
+import advocator3 from "@assets/image_1769611198269.png";
+import advocator4 from "@assets/image_1769611208858.png";
+import advocator5 from "@assets/image_1769611222492.png";
+import advocator6 from "@assets/image_1769611237519.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -302,6 +309,56 @@ export const projects: Project[] = [
           "Additional XX% journal occasionally - feature awareness opportunity",
           "Personality-based segmentation enables targeted feature rollouts",
           "Correlation analysis informing product roadmap priorities"
+        ]
+      }
+    ]
+  },
+  {
+    id: "7",
+    title: "Advocator Responses Survey Report",
+    problem: "Understanding brand advocates' motivations, preferences, and platform perceptions to optimize marketing and community engagement strategies.",
+    tools: ["Survey Design", "Data Visualization", "User Research", "Sentiment Analysis"],
+    impact: "Surveyed XX+ advocators revealing key insights: 46% cite PFM credibility as top differentiator, 32.5% focus on firm comparison features.",
+    category: "Survey & Insights",
+    previewImages: [advocator1, advocator2, advocator3, advocator4, advocator5, advocator6],
+    previewSections: [
+      {
+        title: "Trading Motivation Analysis",
+        content: [
+          "28.2% motivated by quick way of earning money",
+          "28.2% value freedom of time and liberty",
+          "15.4% influenced by peers",
+          "12.8% influenced by social media",
+          "7.7% personally studied financial markets"
+        ]
+      },
+      {
+        title: "Platform Value Perception",
+        content: [
+          "Benefits of comparing firms: Finding best firm, discovering new firms, multi-comparer tool",
+          "Loyalty points: High value perception among users",
+          "Offers and discounts: Best prices, deals, and promotions appreciated",
+          "Reviews: Verified traders and firm reviews drive trust"
+        ]
+      },
+      {
+        title: "Feature Attention Analysis",
+        content: [
+          "32.5% focus on Compare Firms feature",
+          "30% pay attention to Exclusive Promos",
+          "22.5% check Reviews section",
+          "10% focus on Loyalty Points",
+          "5% value Customer Support"
+        ]
+      },
+      {
+        title: "Competitive Differentiation",
+        content: [
+          "46.2% believe Credibility of PFM sets platform apart",
+          "17.9% value Comparison of Firms feature",
+          "15.4% cite Loyalty Points as differentiator",
+          "45% see People's Trust as biggest difference vs competitors",
+          "44% of traders found on X/Twitter platform"
         ]
       }
     ]
