@@ -17,6 +17,11 @@ import septReview5 from "@assets/image_1769610497242.png";
 import septReview6 from "@assets/image_1769610508219.png";
 import septReview7 from "@assets/image_1769610525991.png";
 
+import futures1 from "@assets/image_1769610563345.png";
+import futures2 from "@assets/image_1769610581488.png";
+import futures3 from "@assets/image_1769610597671.png";
+import futures4 from "@assets/image_1769610612321.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -183,6 +188,7 @@ export const projects: Project[] = [
     tools: ["GA4", "Microsoft Clarity", "Looker Studio", "BigQuery", "User Behavior Analysis"],
     impact: "Established baseline metrics showing XX% of visitors engaging with futures pages, with XX% higher engagement rate vs site average.",
     category: "Marketing Analytics",
+    previewImages: [futures1, futures2, futures3, futures4],
     previewSections: [
       {
         title: "Futures Page Performance",
