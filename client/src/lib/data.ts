@@ -22,6 +22,12 @@ import futures2 from "@assets/image_1769610581488.png";
 import futures3 from "@assets/image_1769610597671.png";
 import futures4 from "@assets/image_1769610612321.png";
 
+import ipip1 from "@assets/image_1769610680728.png";
+import ipip2 from "@assets/image_1769610714500.png";
+import ipip3 from "@assets/image_1769610727643.png";
+import ipip4 from "@assets/image_1769610741254.png";
+import ipip5 from "@assets/image_1769610764692.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -235,6 +241,7 @@ export const projects: Project[] = [
     tools: ["Survey Design", "Statistical Analysis", "IPIP Framework", "Correlation Analysis", "Data Visualization"],
     impact: "Profiled XX% of active traders revealing actionable patterns: XX% high conscientiousness indicating strong journaling feature adoption potential.",
     category: "Survey & Insights",
+    previewImages: [ipip1, ipip2, ipip3, ipip4, ipip5],
     previewSections: [
       {
         title: "Study Methodology",
