@@ -7,11 +7,12 @@ import heroBg from "@assets/Daily_Reporting_(3)_1769611978822.png";
 export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 dark:opacity-20"
-        style={{ backgroundImage: `url(${heroBg})` }}
+      <img 
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-50 dark:opacity-30"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-transparent dark:from-background dark:via-background/90 dark:to-background/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/50 to-transparent dark:from-background dark:via-background/80 dark:to-background/50" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
