@@ -34,6 +34,14 @@ import firmStats3 from "@assets/image_1769610821175.png";
 import firmStats4 from "@assets/image_1769610835464.png";
 import firmStats5 from "@assets/image_1769610848898.png";
 
+import survey1 from "@assets/image_1769610873158.png";
+import survey2 from "@assets/image_1769610884505.png";
+import survey3 from "@assets/image_1769610899047.png";
+import survey4 from "@assets/image_1769610910817.png";
+import survey5 from "@assets/image_1769610922614.png";
+import survey6 from "@assets/image_1769610951627.png";
+import survey7 from "@assets/image_1769610971687.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -81,6 +89,7 @@ export const projects: Project[] = [
     tools: ["Survey Design", "Statistical Analysis", "Data Visualization", "UX Research"],
     impact: "Analyzed 1,100+ survey responses identifying key friction points, leading to UX improvements in navigation, filtering, and mobile responsiveness.",
     category: "Survey & Insights",
+    previewImages: [survey1, survey2, survey3, survey4, survey5, survey6, survey7],
     previewSections: [
       {
         title: "Survey Scope",
