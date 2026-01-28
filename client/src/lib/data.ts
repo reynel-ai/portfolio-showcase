@@ -47,6 +47,9 @@ import commission2 from "@assets/image_1769611011882.png";
 import commission3 from "@assets/image_1769611024823.png";
 import commission4 from "@assets/image_1769611042105.png";
 
+import fintokei1 from "@assets/image_1769611078571.png";
+import fintokei2 from "@assets/image_1769611098113.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -178,7 +181,7 @@ export const projects: Project[] = [
     tools: ["Statistical Modeling", "Looker Studio", "BigQuery", "Forecasting", "SQL"],
     impact: "Built point-system forecasting model achieving XX% accuracy, enabling proactive planning for seasonal variations and partner strategy.",
     category: "Data Science",
-    previewImages: [septReview1, septReview2, septReview3, septReview4, septReview5, septReview6, septReview7],
+    previewImages: [septReview1, septReview2, septReview3, septReview4, septReview5, septReview6, septReview7, fintokei1, fintokei2],
     previewSections: [
       {
         title: "Forecasting Model Design",
