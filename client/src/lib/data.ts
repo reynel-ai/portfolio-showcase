@@ -42,6 +42,11 @@ import survey5 from "@assets/image_1769610922614.png";
 import survey6 from "@assets/image_1769610951627.png";
 import survey7 from "@assets/image_1769610971687.png";
 
+import commission1 from "@assets/image_1769611002627.png";
+import commission2 from "@assets/image_1769611011882.png";
+import commission3 from "@assets/image_1769611024823.png";
+import commission4 from "@assets/image_1769611042105.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -127,6 +132,7 @@ export const projects: Project[] = [
     tools: ["Looker Studio", "BigQuery", "SQL", "Trend Analysis", "Forecasting"],
     impact: "Provided executive-level insights on seasonal performance, identifying XX% expected decline with root cause analysis per partner firm.",
     category: "Finance Analytics",
+    previewImages: [commission1, commission2, commission3, commission4],
     previewSections: [
       {
         title: "Performance Summary (Censored)",
