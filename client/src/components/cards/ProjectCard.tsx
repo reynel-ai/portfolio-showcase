@@ -102,7 +102,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <img 
                   src={project.previewImages![currentImageIndex]} 
                   alt={`${project.title} preview ${currentImageIndex + 1}`}
-                  className="w-full h-auto blur-[2px] hover:blur-none transition-all duration-300"
+                  className="w-full h-auto blur-[4px]"
                   data-testid={`img-preview-${project.id}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
@@ -150,7 +150,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             )}
             
             <p className="text-xs text-center text-muted-foreground italic">
-              Hover over image to view clearly. Data shown is for demonstration purposes.
+              Preview blurred for data confidentiality
             </p>
           </div>
         )}
