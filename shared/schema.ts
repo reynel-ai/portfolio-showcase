@@ -44,6 +44,10 @@ export interface Project {
   tools: string[];
   impact: string;
   category: string;
+  previewSections?: {
+    title: string;
+    content: string[];
+  }[];
 }
 
 export interface Experience {

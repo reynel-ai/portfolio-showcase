@@ -12,51 +12,252 @@ import dashboard8 from "@assets/image_1769597408170.png";
 export const projects: Project[] = [
   {
     id: "1",
-    title: "Revenue Analytics Dashboard",
-    problem: "Prop Firm Match lacked real-time visibility into revenue streams and sales performance, making it difficult to identify growth opportunities.",
-    tools: ["Looker Studio", "BigQuery", "GA4", "SQL"],
-    impact: "Enabled data-driven decisions resulting in 35% improvement in revenue forecasting accuracy and identification of top-performing sales channels.",
-    category: "Finance Analytics"
+    title: "Firm Statistics Weekly Report",
+    problem: "Stakeholders needed a consolidated view of weekly performance metrics for prop trading firms to track popularity rankings, revenue trends, and traffic patterns.",
+    tools: ["Looker Studio", "BigQuery", "GA4", "SQL", "Data Visualization"],
+    impact: "Delivered actionable weekly insights enabling data-driven partner decisions and identification of top-performing firms with XX% traffic share.",
+    category: "Business Intelligence",
+    previewSections: [
+      {
+        title: "Report Overview",
+        content: [
+          "Weekly performance tracking for partner prop trading firms",
+          "Popularity ranking changes with week-over-week comparisons",
+          "Revenue generated metrics with growth/decline indicators",
+          "Traffic visitor analysis across firm pages"
+        ]
+      },
+      {
+        title: "Key Metrics Tracked (Censored)",
+        content: [
+          "Total Platform Visits: [REDACTED] visits",
+          "Revenue Generated: $[REDACTED] (+/- X.XX%)",
+          "Firm Ranking: Position changes from #X to #X",
+          "Share of Firm-Page Visits: XX% of total traffic",
+          "Favorite Change: +/- X.XX% week-over-week"
+        ]
+      },
+      {
+        title: "Insights Delivered",
+        content: [
+          "Identification of firms gaining or losing popularity",
+          "Revenue attribution per partner firm",
+          "Traffic source analysis (organic, direct, referral)",
+          "Competitive positioning metrics"
+        ]
+      }
+    ]
   },
   {
     id: "2",
-    title: "Customer Insights Survey System",
-    problem: "Limited understanding of customer preferences and satisfaction levels across different product offerings.",
-    tools: ["Survey Design", "Statistical Analysis", "PostHog", "Visualization"],
-    impact: "Captured feedback from 2,000+ customers, leading to product improvements that increased NPS by 18 points.",
-    category: "Survey & Insights"
+    title: "Website User Perception Survey Analysis",
+    problem: "Limited understanding of user experience pain points and website functionality issues affecting visitor satisfaction and engagement.",
+    tools: ["Survey Design", "Statistical Analysis", "Data Visualization", "UX Research"],
+    impact: "Analyzed 1,100+ survey responses identifying key friction points, leading to UX improvements in navigation, filtering, and mobile responsiveness.",
+    category: "Survey & Insights",
+    previewSections: [
+      {
+        title: "Survey Scope",
+        content: [
+          "Total Respondents: 1,100+ users across two survey forms",
+          "Visit Frequency Analysis: Daily (22.5%), Multiple times weekly (43.7%)",
+          "Trading Experience Levels: Early/Intermediate (53.8%), Advanced (46.1%)"
+        ]
+      },
+      {
+        title: "General Functionality Pain Points Identified",
+        content: [
+          "Filtering Issues: Users reported difficulty finding filters, slow loading, too many options",
+          "Navigation Difficulties: Confusion with UI, multiple pages to find information",
+          "User Interface: Improvement requests for cleaner layouts",
+          "Tabs and Menu Bar: Arrangement improvements requested",
+          "Adaptation Resolution: Screen size compatibility issues on smaller displays"
+        ]
+      },
+      {
+        title: "Key Recommendations",
+        content: [
+          "Mobile optimization priority for smaller screen users",
+          "Simplified filtering system with fewer options",
+          "Improved navigation with clearer information hierarchy",
+          "Multi-language support consideration"
+        ]
+      }
+    ]
   },
   {
     id: "3",
-    title: "Sales Performance Tracker",
-    problem: "Manual tracking of sales metrics was time-consuming and prone to errors, delaying critical business decisions.",
-    tools: ["Looker Studio", "Google Sheets", "GTM", "SQL"],
-    impact: "Automated 90% of reporting workflows, saving 20+ hours weekly and providing real-time sales visibility.",
-    category: "Business Intelligence"
+    title: "Monthly Commission Analytics Report",
+    problem: "Need for comprehensive monthly performance analysis comparing commission trends, partner contributions, and seasonal patterns.",
+    tools: ["Looker Studio", "BigQuery", "SQL", "Trend Analysis", "Forecasting"],
+    impact: "Provided executive-level insights on seasonal performance, identifying XX% expected decline with root cause analysis per partner firm.",
+    category: "Finance Analytics",
+    previewSections: [
+      {
+        title: "Performance Summary (Censored)",
+        content: [
+          "Total Commission Change: -XX% month-over-month (seasonal pattern)",
+          "Comparison to prior year seasonal pattern analyzed",
+          "Partner-specific factors identified vs underlying demand"
+        ]
+      },
+      {
+        title: "Commission Ranking Analysis",
+        content: [
+          "Top contributors to decline identified with root cause",
+          "Partner re-attribution effects quantified (~$XXK impact)",
+          "Firms under review for tracking or technical issues",
+          "Active investigation on variance patterns"
+        ]
+      },
+      {
+        title: "Website Performance Metrics",
+        content: [
+          "Firm Visits: +XX% increase month-over-month",
+          "New Users: +XX% growth during period",
+          "Active Users: Doubled compared to prior month",
+          "Engagement remained elevated post-campaign events"
+        ]
+      },
+      {
+        title: "Closing Takeaways",
+        content: [
+          "Seasonal patterns followed expectations",
+          "Platform fundamentals remain strong",
+          "Record growth in users and engagement",
+          "Analytics team monitoring partner performance closely"
+        ]
+      }
+    ]
   },
   {
     id: "4",
-    title: "Marketing Attribution Model",
-    problem: "Unclear ROI across marketing channels made budget allocation challenging and inefficient.",
-    tools: ["GA4", "BigQuery", "Meta Ads Manager", "Data Modeling"],
-    impact: "Developed multi-touch attribution model that optimized ad spend, improving ROAS by 42%.",
-    category: "Marketing Analytics"
+    title: "Quarterly Sales Review & Forecasting",
+    problem: "Leadership required predictive models for sales forecasting and detailed analysis of quarterly performance across partner firms.",
+    tools: ["Statistical Modeling", "Looker Studio", "BigQuery", "Forecasting", "SQL"],
+    impact: "Built point-system forecasting model achieving XX% accuracy, enabling proactive planning for seasonal variations and partner strategy.",
+    category: "Data Science",
+    previewSections: [
+      {
+        title: "Forecasting Model Design",
+        content: [
+          "Point System Model: Daily and monthly weightings based on historical profitability",
+          "Day-of-week patterns: Monday-Sunday earning variations analyzed",
+          "Monthly seasonality factors applied (Jan-Dec adjustments)",
+          "Model validated against actual earnings with XX% accuracy"
+        ]
+      },
+      {
+        title: "Quarterly Earnings Analysis (Censored)",
+        content: [
+          "Q3 Total Earnings: $[REDACTED] across all partners",
+          "Top CFD Earners: [FIRM NAMES REDACTED] with +/-XX% changes",
+          "Bottom Performers: Identified with root cause analysis",
+          "Futures Earnings: XX% of overall revenue from futures products"
+        ]
+      },
+      {
+        title: "Regional & Segment Insights",
+        content: [
+          "Geographic buyer distribution tracked (UK, EU, etc.)",
+          "CFD vs Futures performance comparison",
+          "Month-over-month trends by partner category",
+          "Forecasted earnings for upcoming quarters"
+        ]
+      }
+    ]
   },
   {
     id: "5",
-    title: "Executive KPI Dashboard",
-    problem: "Leadership needed a single source of truth for key business metrics across departments.",
-    tools: ["Looker Studio", "BigQuery", "SQL", "Microsoft Clarity"],
-    impact: "Created unified dashboard serving 15+ stakeholders, reducing reporting time by 75%.",
-    category: "Business Intelligence"
+    title: "Futures Trading Analytics Dashboard",
+    problem: "New futures section launched needed comprehensive analytics to track page performance, user engagement, and revenue attribution.",
+    tools: ["GA4", "Microsoft Clarity", "Looker Studio", "BigQuery", "User Behavior Analysis"],
+    impact: "Established baseline metrics showing XX% of visitors engaging with futures pages, with XX% higher engagement rate vs site average.",
+    category: "Marketing Analytics",
+    previewSections: [
+      {
+        title: "Futures Page Performance",
+        content: [
+          "XX% of overall visitors go to futures pages",
+          "Average Engagement Rate: XX.XX% (vs XX.XX% site average)",
+          "Average Time on Page: Xm XXs (vs Xm XXs site average)",
+          "Top XX% of visits concentrated in key partner pages"
+        ]
+      },
+      {
+        title: "Traffic Source Analysis",
+        content: [
+          "Organic Search: XX.X% of futures page visitors",
+          "Direct Traffic: XX.XX% of visitors",
+          "Users from search engines show highest engagement",
+          "Direct visitors show lowest engagement patterns"
+        ]
+      },
+      {
+        title: "Key Pages Performance",
+        content: [
+          "Extra Account & Best Sellers: XX% of key page traffic",
+          "Reviews section: X% engagement (lower than CFD)",
+          "Key pages represent XX.XX% of total futures visits",
+          "Comparison to CFD section benchmarks provided"
+        ]
+      },
+      {
+        title: "User Behavior (Clarity Analysis)",
+        content: [
+          "Dead Clicks: XX.XX% (associated with misclicks on specific elements)",
+          "Rage Clicks: X.XX% (minimal friction detected)",
+          "Top interaction points identified for optimization",
+          "No major UX flaws detected in session recordings"
+        ]
+      }
+    ]
   },
   {
     id: "6",
-    title: "User Behavior Analysis System",
-    problem: "Needed deeper understanding of user behaviors to drive conversion optimization.",
-    tools: ["PostHog", "Microsoft Clarity", "GA4", "ActiveCampaign"],
-    impact: "Built comprehensive tracking and analysis system, enabling proactive strategies that improved conversion by 28%.",
-    category: "Data Science"
+    title: "Traders Personality Study (IPIP Big Five)",
+    problem: "Understanding trader personality traits to inform product design, user experience, and platform feature development.",
+    tools: ["Survey Design", "Statistical Analysis", "IPIP Framework", "Correlation Analysis", "Data Visualization"],
+    impact: "Profiled XX% of active traders revealing actionable patterns: XX% high conscientiousness indicating strong journaling feature adoption potential.",
+    category: "Survey & Insights",
+    previewSections: [
+      {
+        title: "Study Methodology",
+        content: [
+          "IPIP (International Personality Item Pool) 50-item questionnaire",
+          "Big Five personality traits assessed: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism",
+          "Rating scale: 1-5 based on how accurately statements describe participant",
+          "Correlated with Successful Trader Survey responses"
+        ]
+      },
+      {
+        title: "Key Trait Findings (Summary)",
+        content: [
+          "Agreeableness: XX% Moderate, XX% Low - implications for social proof reliance",
+          "Conscientiousness: XX% High/Moderate - strong detail-orientation among users",
+          "Extraversion: XX% Low - preference for self-guided, quiet exploration",
+          "Neuroticism: Varied - need for reassurance and transparency in UX"
+        ]
+      },
+      {
+        title: "Website Design Implications",
+        content: [
+          "High Conscientiousness: Detailed comparison tools, organized layouts, save-progress features",
+          "Low Extraversion: Clean, distraction-free environment, in-depth resources",
+          "Trust signals and transparent policies for security-conscious users",
+          "Avoid high-pressure CTAs; prefer calm, supportive tone"
+        ]
+      },
+      {
+        title: "Platform Development Insights",
+        content: [
+          "XX% of users journal trades consistently - high adoption potential for trading platform",
+          "Additional XX% journal occasionally - feature awareness opportunity",
+          "Personality-based segmentation enables targeted feature rollouts",
+          "Correlation analysis informing product roadmap priorities"
+        ]
+      }
+    ]
   }
 ];
 
