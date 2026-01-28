@@ -10,7 +10,7 @@ export function HeroSection() {
       <img 
         src={heroBg}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover opacity-50 dark:opacity-30"
+        className="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/50 to-transparent dark:from-background dark:via-background/80 dark:to-background/50" />
 
