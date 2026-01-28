@@ -34,7 +34,7 @@ const highlights = [
 export default function Home() {
   const featuredProjects = projects.slice(0, 3);
   const dataSkills = skills.filter(s => s.category === "data").slice(0, 6);
-  const toolSkills = skills.filter(s => s.category === "tools").slice(0, 6);
+  const toolSkills = skills.filter(s => s.category === "tools");
 
   return (
     <Layout>

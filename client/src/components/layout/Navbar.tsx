@@ -41,17 +41,17 @@ export function Navbar() {
 
           <div 
             ref={navRef}
-            className="hidden md:flex items-center gap-1 relative"
+            className="hidden md:flex items-center relative"
             onMouseLeave={() => setHoveredIndex(null)}
           >
             {navLinks.map((link, index) => (
               <Link 
                 key={link.href} 
                 href={link.href}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 relative z-10 ${
+                className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 relative z-10 ${
                   currentIndex === index
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
+                    ? "text-white"
+                    : "text-muted-foreground"
                 }`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
@@ -60,13 +60,13 @@ export function Navbar() {
               </Link>
             ))}
             <div 
-              className="absolute h-8 bg-primary/10 rounded-md transition-all duration-300 ease-out"
+              className="absolute h-8 bg-primary rounded-md transition-all duration-300 ease-out -z-0"
               style={{
-                width: '80px',
-                left: `${currentIndex * 84 + 4}px`,
+                width: navLinks[currentIndex >= 0 ? currentIndex : 0]?.label.length * 9 + 24 + 'px',
+                left: `${navLinks.slice(0, currentIndex >= 0 ? currentIndex : 0).reduce((acc, link) => acc + link.label.length * 9 + 32, 0)}px`,
                 top: '50%',
                 transform: 'translateY(-50%)',
-                opacity: currentIndex >= 0 ? 1 : 0,
+                opacity: currentIndex >= 0 ? 1 : 1,
               }}
             />
           </div>
