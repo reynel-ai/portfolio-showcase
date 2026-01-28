@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { BarChart3, Linkedin, Mail, Github } from "lucide-react";
+import { BarChart3, Linkedin, Mail, Globe } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,8 +18,8 @@ export function Footer() {
               <span className="font-semibold text-lg">Reynel Elerio</span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-md">
-              Data Scientist & Analytics Manager passionate about turning complex data into 
-              actionable insights that drive business growth and revenue.
+              Data analytics leader pioneering the application of AI-driven tools for real world application. 
+              Founder behind automated dashboard solutions that streamline data needs for startups and growing companies.
             </p>
           </div>
 
@@ -53,14 +53,14 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Connect</h4>
             <div className="flex gap-3">
               <a
-                href="mailto:reynel@example.com"
+                href="mailto:ibecomewhatithink@gmail.com"
                 className="p-2 rounded-md bg-muted hover:bg-accent transition-colors"
                 data-testid="link-footer-email"
               >
                 <Mail className="h-5 w-5 text-muted-foreground" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/reynel-elerio-a9631b178"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-md bg-muted hover:bg-accent transition-colors"
@@ -69,13 +69,13 @@ export function Footer() {
                 <Linkedin className="h-5 w-5 text-muted-foreground" />
               </a>
               <a
-                href="https://github.com"
+                href="https://pinoyhubstore.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-md bg-muted hover:bg-accent transition-colors"
-                data-testid="link-footer-github"
+                data-testid="link-footer-website"
               >
-                <Github className="h-5 w-5 text-muted-foreground" />
+                <Globe className="h-5 w-5 text-muted-foreground" />
               </a>
             </div>
           </div>

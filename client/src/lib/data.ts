@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: "2",
     title: "Customer Insights Survey System",
     problem: "Limited understanding of customer preferences and satisfaction levels across different product offerings.",
-    tools: ["Survey Design", "Statistical Analysis", "Python", "Visualization"],
+    tools: ["Survey Design", "Statistical Analysis", "PostHog", "Visualization"],
     impact: "Captured feedback from 2,000+ customers, leading to product improvements that increased NPS by 18 points.",
     category: "Survey & Insights"
   },
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     id: "4",
     title: "Marketing Attribution Model",
     problem: "Unclear ROI across marketing channels made budget allocation challenging and inefficient.",
-    tools: ["GA4", "BigQuery", "Python", "Data Modeling"],
+    tools: ["GA4", "BigQuery", "Meta Ads Manager", "Data Modeling"],
     impact: "Developed multi-touch attribution model that optimized ad spend, improving ROAS by 42%.",
     category: "Marketing Analytics"
   },
@@ -37,16 +37,16 @@ export const projects: Project[] = [
     id: "5",
     title: "Executive KPI Dashboard",
     problem: "Leadership needed a single source of truth for key business metrics across departments.",
-    tools: ["Looker Studio", "BigQuery", "SQL", "Data Warehousing"],
+    tools: ["Looker Studio", "BigQuery", "SQL", "Microsoft Clarity"],
     impact: "Created unified dashboard serving 15+ stakeholders, reducing reporting time by 75%.",
     category: "Business Intelligence"
   },
   {
     id: "6",
-    title: "Churn Prediction Model",
-    problem: "High customer churn rate with no early warning system to identify at-risk customers.",
-    tools: ["Python", "Machine Learning", "SQL", "Statistical Analysis"],
-    impact: "Built predictive model with 85% accuracy, enabling proactive retention strategies that reduced churn by 23%.",
+    title: "User Behavior Analysis System",
+    problem: "Needed deeper understanding of user behaviors to drive conversion optimization.",
+    tools: ["PostHog", "Microsoft Clarity", "GA4", "ActiveCampaign"],
+    impact: "Built comprehensive tracking and analysis system, enabling proactive strategies that improved conversion by 28%.",
     category: "Data Science"
   }
 ];
@@ -55,41 +55,63 @@ export const experiences: Experience[] = [
   {
     id: "1",
     role: "Analytics Manager",
-    company: "Prop Firm Match",
-    period: "2022 - Present",
-    description: "Leading end-to-end analytics operations including revenue analysis, sales tracking, and dashboard development. Driving data-informed decision making across the organization.",
+    company: "Prop Firm Match Global FZCO",
+    period: "March 2024 - Present",
+    description: "Leading the full analytics lifecycle from data collection and management to analysis and reporting. Driving data-informed decision making across finance, marketing, product, and operations.",
     highlights: [
-      "Built comprehensive analytics infrastructure from the ground up",
-      "Developed revenue and sales tracking dashboards for executive team",
-      "Designed and analyzed customer surveys to drive product improvements",
-      "Implemented GTM and GA4 for accurate data collection",
-      "Created automated reporting systems saving 30+ hours monthly"
+      "Lead the full analytics lifecycle from data collection and management to analysis and reporting",
+      "Develop data-driven dashboards and insights to guide strategic decisions across marketing, product, and operations",
+      "Design and optimize tracking systems using Google Tag Manager and GA4 to ensure accurate data capture",
+      "Conduct performance evaluation of digital campaigns and user behaviors to drive revenue growth and conversion optimization",
+      "Partner with cross-functional teams to translate analytical findings into actionable business strategies",
+      "Handle multiple roles across finance, marketing, content, and paid ads"
     ]
   },
   {
     id: "2",
-    role: "Business Intelligence Analyst",
-    company: "Digital Marketing Agency",
-    period: "2020 - 2022",
-    description: "Provided data-driven insights to optimize marketing campaigns and improve client ROI across multiple digital channels.",
+    role: "Marketing Analyst",
+    company: "Accenture Philippines",
+    period: "May 2023 - October 2023",
+    description: "Delivered comprehensive market and impact assessments to evaluate business opportunities and support strategic decision-making.",
     highlights: [
-      "Analyzed campaign performance for 20+ clients",
-      "Built custom reporting dashboards in Looker Studio",
-      "Developed attribution models for marketing spend optimization",
-      "Trained team members on analytics tools and best practices"
+      "Delivered comprehensive market and impact assessments to evaluate business opportunities",
+      "Synthesized large data sets into actionable insights for marketing and business development teams",
+      "Supported strategy design by identifying key market trends and customer behaviors"
     ]
   },
   {
     id: "3",
-    role: "Data Analyst",
-    company: "E-commerce Startup",
-    period: "2018 - 2020",
-    description: "Supported business growth through customer analytics, sales forecasting, and operational reporting.",
+    role: "Research Consultant",
+    company: "Google Operations Center",
+    period: "January 2021 - May 2023",
+    description: "Conducted user research and interviews for Google Products, analyzing qualitative and quantitative data to inform product improvements.",
     highlights: [
-      "Created weekly sales and inventory reports",
-      "Analyzed customer behavior patterns to improve conversion",
-      "Automated data collection and ETL processes",
-      "Collaborated with marketing team on campaign analysis"
+      "Conducted user research and interviews for Google Products, analyzing qualitative and quantitative data",
+      "Delivered insights that informed product design and user experience improvements",
+      "Led data interpretation and reporting to translate research findings into strategic recommendations"
+    ]
+  },
+  {
+    id: "4",
+    role: "Support Ambassador",
+    company: "Airbnb (24-7 Intouch Inc.)",
+    period: "June 2019 - December 2021",
+    description: "Managed user support cases across multiple channels while maintaining high satisfaction scores.",
+    highlights: [
+      "Managed user support cases across multiple channels (voice, email, and chat)",
+      "Ensured resolution of complex account and booking issues while maintaining high satisfaction scores"
+    ]
+  },
+  {
+    id: "5",
+    role: "Digital Marketing Analyst (Google Ads)",
+    company: "TDCX",
+    period: "March 2017 - March 2019",
+    description: "Managed and analyzed digital campaigns across China, Brazil, and EMEA markets.",
+    highlights: [
+      "Managed and analyzed digital campaigns across China, Brazil, and EMEA markets",
+      "Evaluated campaign effectiveness and provided insights into regional market performance",
+      "Supported lead generation strategies by identifying trends in ad signals and user behaviors"
     ]
   }
 ];
@@ -101,19 +123,21 @@ export const skills: Skill[] = [
   { name: "Survey Design & Insights", category: "data" },
   { name: "Statistical Analysis", category: "data" },
   { name: "Data Visualization", category: "data" },
-  { name: "Predictive Modeling", category: "data" },
-  { name: "GA4", category: "tools" },
-  { name: "GTM", category: "tools" },
-  { name: "Looker Studio", category: "tools" },
+  { name: "User Research", category: "data" },
+  { name: "Google Analytics 4", category: "tools" },
+  { name: "Google Tag Manager", category: "tools" },
+  { name: "Google Looker Studio", category: "tools" },
   { name: "BigQuery", category: "tools" },
-  { name: "SQL", category: "tools" },
-  { name: "Python", category: "tools" },
-  { name: "Replit", category: "tools" },
+  { name: "HeidiSQL", category: "tools" },
+  { name: "PostHog", category: "tools" },
+  { name: "Microsoft Clarity", category: "tools" },
   { name: "Google Sheets", category: "tools" },
-  { name: "Website Creation", category: "growth" },
-  { name: "Content Management", category: "growth" },
-  { name: "Ads Management", category: "growth" },
-  { name: "SEO", category: "growth" },
+  { name: "ActiveCampaign", category: "tools" },
+  { name: "Replit", category: "tools" },
+  { name: "Meta Ads Manager", category: "growth" },
+  { name: "Google Ads", category: "growth" },
+  { name: "Digital Marketing", category: "growth" },
+  { name: "Campaign Analysis", category: "growth" },
   { name: "Marketing Analytics", category: "growth" }
 ];
 
@@ -145,7 +169,7 @@ export const dashboards = [
   },
   {
     id: "6",
-    title: "Churn Analysis Report",
-    description: "Customer retention and churn metrics"
+    title: "User Behavior Analysis",
+    description: "Conversion optimization and user journey tracking"
   }
 ];

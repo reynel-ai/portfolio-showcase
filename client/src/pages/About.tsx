@@ -19,13 +19,13 @@ const coreAreas = [
   },
   {
     icon: Users,
-    title: "Surveys & Customer Insights",
-    description: "Designing research methodologies to understand customer needs and satisfaction."
+    title: "User Research & Insights",
+    description: "Conducting user research and analyzing qualitative and quantitative data for product improvements."
   },
   {
     icon: Lightbulb,
     title: "Dashboard Development",
-    description: "Crafting interactive visualizations that tell compelling data stories."
+    description: "Crafting interactive visualizations and automated dashboard solutions."
   }
 ];
 
@@ -33,9 +33,9 @@ const values = [
   "Data-driven decision making",
   "End-to-end analytics ownership",
   "Business impact focus",
-  "Continuous improvement",
-  "Clear communication",
-  "Collaborative approach"
+  "Cross-functional collaboration",
+  "AI-driven innovation",
+  "Continuous improvement"
 ];
 
 export default function About() {
@@ -60,9 +60,9 @@ export default function About() {
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8" data-testid="text-about-intro">
-              I'm a Data Scientist and Analytics Manager with a passion for transforming raw data 
-              into actionable insights that drive business growth. My approach combines technical 
-              expertise with strategic thinking to deliver solutions that make a real impact.
+              Data analytics leader pioneering the application of AI-driven tools for real world application. 
+              Founder and business idea owner behind automated dashboard solutions that streamline data needs 
+              for startups and growing companies.
             </p>
           </motion.div>
 
@@ -83,23 +83,23 @@ export default function About() {
                   <div className="space-y-4 text-muted-foreground">
                     <p>
                       Currently serving as <span className="text-foreground font-medium">Analytics Manager</span> at{" "}
-                      <span className="text-primary font-medium">Prop Firm Match</span>, I lead end-to-end 
-                      analytics operations that span revenue analysis, sales tracking, and strategic reporting. 
-                      My role involves building the analytics infrastructure from the ground up and ensuring 
-                      data-informed decision making across the organization.
+                      <span className="text-primary font-medium">Prop Firm Match Global FZCO</span>, I manage 
+                      the full data lifecycle and decision-making engines across finance, marketing, product, 
+                      and development teams while leading cross-functional data initiatives.
                     </p>
                     
                     <p>
-                      With a background spanning business intelligence, digital marketing analytics, and 
-                      customer research, I bring a holistic view to every analytics challenge. I believe 
-                      in the power of clear visualization and storytelling to communicate insights effectively 
-                      to stakeholders at all levels.
+                      My career spans roles at industry leaders including <span className="text-foreground font-medium">Accenture</span>, 
+                      {" "}<span className="text-foreground font-medium">Google Operations Center</span>, 
+                      {" "}<span className="text-foreground font-medium">Airbnb</span>, and 
+                      {" "}<span className="text-foreground font-medium">TDCX</span>, where I've developed expertise 
+                      in user research, marketing analytics, and digital campaign optimization across global markets.
                     </p>
                     
                     <p>
-                      Beyond traditional analytics, I also bring expertise in website creation, content 
-                      management, ads management, and SEO—enabling me to understand and optimize the 
-                      full digital ecosystem.
+                      I specialize in designing and optimizing tracking systems using Google Tag Manager and GA4, 
+                      conducting performance evaluation of digital campaigns, and translating analytical findings 
+                      into actionable business strategies.
                     </p>
                   </div>
                 </CardContent>
@@ -184,18 +184,18 @@ export default function About() {
               <CardContent className="py-12">
                 <div className="max-w-3xl mx-auto text-center">
                   <Badge variant="secondary" className="mb-4">Current Focus</Badge>
-                  <h2 className="text-2xl font-bold mb-4">Prop Firm Match</h2>
+                  <h2 className="text-2xl font-bold mb-4">Prop Firm Match Global FZCO</h2>
                   <p className="text-muted-foreground mb-6">
-                    At Prop Firm Match, I've built and now manage the complete analytics ecosystem. 
-                    From implementing tracking infrastructure to creating executive dashboards, 
-                    my work touches every aspect of how the company understands and leverages its data.
+                    Leading the full analytics lifecycle from data collection and management to analysis and reporting. 
+                    Developing data-driven dashboards and insights to guide strategic decisions across marketing, 
+                    product, and operations while partnering with cross-functional teams.
                   </p>
                   <div className="flex flex-wrap justify-center gap-2">
                     <Badge>Revenue Analytics</Badge>
                     <Badge>Sales Tracking</Badge>
                     <Badge>Dashboard Development</Badge>
-                    <Badge>Customer Surveys</Badge>
-                    <Badge>Business Reporting</Badge>
+                    <Badge>GA4 & GTM</Badge>
+                    <Badge>Conversion Optimization</Badge>
                   </div>
                 </div>
               </CardContent>

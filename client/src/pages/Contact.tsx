@@ -10,21 +10,27 @@ import { insertContactMessageSchema, type InsertContactMessage } from "@shared/s
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Linkedin, MapPin, Send, Loader2 } from "lucide-react";
+import { Mail, Linkedin, MapPin, Send, Loader2, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 
 const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "reynel@example.com",
-    href: "mailto:reynel@example.com"
+    value: "ibecomewhatithink@gmail.com",
+    href: "mailto:ibecomewhatithink@gmail.com"
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "Connect on LinkedIn",
-    href: "https://linkedin.com"
+    href: "https://linkedin.com/in/reynel-elerio-a9631b178"
+  },
+  {
+    icon: Globe,
+    label: "Portfolio",
+    value: "pinoyhubstore.com",
+    href: "https://pinoyhubstore.com"
   },
   {
     icon: MapPin,

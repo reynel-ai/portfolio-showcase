@@ -35,13 +35,13 @@ export function HeroSection() {
           </h1>
 
           <p className="text-xl sm:text-2xl text-muted-foreground mb-4 font-medium" data-testid="text-hero-headline">
-            Turning Data into Revenue-Driving Decisions
+            Pioneering AI-Driven Analytics for Real World Application
           </p>
 
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl" data-testid="text-hero-description">
-            I specialize in building analytics systems, revenue tracking dashboards, and 
-            extracting insights that fuel business growth. Currently driving data strategy 
-            at <span className="text-primary font-medium">Prop Firm Match</span>.
+            Founder behind automated dashboard solutions that streamline data needs for startups 
+            and growing companies. Currently managing the full data lifecycle across finance, 
+            marketing, product, and development at <span className="text-primary font-medium">Prop Firm Match Global FZCO</span>.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -84,8 +84,8 @@ export function HeroSection() {
                 <TrendingUp className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="font-semibold" data-testid="text-stat-revenue">35%</p>
-                <p className="text-sm text-muted-foreground">Revenue Forecast Accuracy</p>
+                <p className="font-semibold" data-testid="text-stat-experience">7+ Years</p>
+                <p className="text-sm text-muted-foreground">Analytics Experience</p>
               </div>
             </motion.div>
 
@@ -99,8 +99,8 @@ export function HeroSection() {
                 <PieChart className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="font-semibold" data-testid="text-stat-hours">30+</p>
-                <p className="text-sm text-muted-foreground">Hours Saved Monthly</p>
+                <p className="font-semibold" data-testid="text-stat-companies">5+</p>
+                <p className="text-sm text-muted-foreground">Companies Served</p>
               </div>
             </motion.div>
           </div>
