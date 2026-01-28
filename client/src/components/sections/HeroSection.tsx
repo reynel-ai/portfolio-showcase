@@ -23,24 +23,24 @@ export function HeroSection() {
         >
           <div className="flex items-center gap-2 mb-6">
             <div className="h-1 w-12 bg-primary rounded-full" />
-            <span className="text-primary font-medium text-sm uppercase tracking-wider">
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider drop-shadow-sm">
               Data Scientist & Analytics Manager
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6" data-testid="text-hero-title">
-            <span className="text-foreground">Hi, I'm </span>
+            <span className="text-gray-900 dark:text-foreground">Hi, I'm </span>
             <span className="text-gradient">Reynel Elerio</span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-4 font-medium" data-testid="text-hero-headline">
+          <p className="text-xl sm:text-2xl text-gray-800 dark:text-muted-foreground mb-4 font-semibold" data-testid="text-hero-headline">
             Pioneering AI-Driven Analytics for Real World Application
           </p>
 
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl" data-testid="text-hero-description">
+          <p className="text-lg text-gray-700 dark:text-muted-foreground mb-8 max-w-2xl font-medium" data-testid="text-hero-description">
             Founder behind automated dashboard solutions that streamline data needs for startups 
             and growing companies. Currently managing the full data lifecycle across finance, 
-            marketing, product, and development at <span className="text-primary font-medium">Prop Firm Match Global FZCO</span>.
+            marketing, product, and development at <span className="text-primary font-semibold">Prop Firm Match Global FZCO</span>.
           </p>
 
           <div className="flex flex-wrap gap-4">
