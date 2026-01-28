@@ -28,6 +28,12 @@ import ipip3 from "@assets/image_1769610727643.png";
 import ipip4 from "@assets/image_1769610741254.png";
 import ipip5 from "@assets/image_1769610764692.png";
 
+import firmStats1 from "@assets/image_1769610796394.png";
+import firmStats2 from "@assets/image_1769610810959.png";
+import firmStats3 from "@assets/image_1769610821175.png";
+import firmStats4 from "@assets/image_1769610835464.png";
+import firmStats5 from "@assets/image_1769610848898.png";
+
 export const projects: Project[] = [
   {
     id: "1",
@@ -36,6 +42,7 @@ export const projects: Project[] = [
     tools: ["Looker Studio", "BigQuery", "GA4", "SQL", "Data Visualization"],
     impact: "Delivered actionable weekly insights enabling data-driven partner decisions and identification of top-performing firms with XX% traffic share.",
     category: "Business Intelligence",
+    previewImages: [firmStats1, firmStats2, firmStats3, firmStats4, firmStats5],
     previewSections: [
       {
         title: "Report Overview",
