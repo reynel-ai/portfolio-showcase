@@ -2,20 +2,16 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, TrendingUp, PieChart } from "lucide-react";
 import { motion } from "framer-motion";
-import heroBg from "@assets/Daily_Reporting_(2)_1769611853425.png";
+import heroBg from "@assets/Daily_Reporting_(3)_1769611978822.png";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/10" />
-      
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 dark:opacity-20 pointer-events-none hidden lg:block">
-        <img 
-          src={heroBg} 
-          alt="Analytics visualization" 
-          className="w-full h-full object-contain object-right"
-        />
-      </div>
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/70 dark:from-background dark:via-background/98 dark:to-background/80" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
