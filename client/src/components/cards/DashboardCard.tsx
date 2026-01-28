@@ -31,7 +31,7 @@ export function DashboardCard({ dashboard }: DashboardCardProps) {
               <Button 
                 variant="secondary" 
                 size="sm" 
-                className="absolute bottom-3 right-3 invisible group-hover:visible gap-1"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 invisible group-hover:visible gap-1"
                 data-testid={`button-preview-${dashboard.id}`}
               >
                 <Eye className="h-3.5 w-3.5" />
