@@ -19,7 +19,7 @@ export function Footer() {
             </Link>
             <p className="text-muted-foreground text-sm max-w-md">
               Data analytics leader pioneering the application of AI-driven tools for real world application. 
-              developing automated dashboard solutions that streamline data needs for startups and growing companies.
+              Developing automated dashboard solutions that streamline data needs for startups and growing companies.
             </p>
           </div>
 

@@ -38,7 +38,7 @@ export function HeroSection() {
           </p>
 
           <p className="text-lg text-gray-700 dark:text-muted-foreground mb-8 max-w-2xl font-medium" data-testid="text-hero-description">
-            developing automated dashboard solutions that streamline data needs for startups 
+            Developing automated dashboard solutions that streamline data needs for startups 
             and growing companies. Currently managing the full data lifecycle across finance, 
             marketing, product, and development at <span className="text-primary font-semibold">Prop Firm Match Global FZCO</span>.
           </p>
