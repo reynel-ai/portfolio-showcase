@@ -38,8 +38,9 @@ export default function Projects() {
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-3xl" data-testid="text-projects-intro">
-              A collection of projects demonstrating how I've used data and analytics to solve 
-              business problems and drive measurable results.
+              A collection of analytics work and research — the reports, surveys, and case studies 
+              built using SQL, BigQuery, GA4, and Looker Studio that drive business decisions at 
+              Prop Firm Match. For the full-stack apps I've shipped with AI, see the home page.
             </p>
           </motion.div>
 

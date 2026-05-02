@@ -28,9 +28,9 @@ export default function Experience() {
             </h1>
 
             <p className="text-lg text-muted-foreground" data-testid="text-experience-intro">
-              My career has been focused on leveraging data to drive measurable business outcomes. 
-              From early roles in data analysis to leading analytics strategy, I've consistently 
-              delivered impact through data-driven insights.
+              Seven years of analytics work — and a recent shift into building the tools that make 
+              the analysis possible. My current role isn't just about insights; it's about shipping 
+              internal software with AI as a development partner.
             </p>
           </motion.div>
 

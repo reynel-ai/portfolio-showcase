@@ -39,12 +39,12 @@ shared/
 ```
 
 ## Pages
-1. **Home** (/) - Hero section with stats, featured projects, skills preview, CTA
-2. **About** (/about) - Professional overview, core expertise areas, values
-3. **Experience** (/experience) - Career timeline with highlights
-4. **Projects** (/projects) - Project cards with category filtering
+1. **Home** (/) - Hero section with stats, "What I Do" cards, featured analytics projects, "Apps I've Built" section, skills preview, CTA
+2. **About** (/about) - AI-forward professional overview, core expertise areas, values
+3. **Experience** (/experience) - Career timeline with highlights (PFM role updated with AI dev methodology)
+4. **Projects** (/projects) - Analytics reports and case studies with category filtering
 5. **Dashboards** (/dashboards) - Visual gallery with preview modals
-6. **Skills** (/skills) - Skills organized by category (Data, Tools, Growth)
+6. **Skills** (/skills) - Skills organized by category (Data, Tools, Growth) — includes AI-Assisted Development, SQL, Python, React+TypeScript, Node/Express, Replit+Claude
 7. **Contact** (/contact) - Contact form with validation
 
 ## API Endpoints
@@ -65,6 +65,8 @@ shared/
 - Focus on Prop Firm Match work experience
 - Light blue professional color theme
 - Emphasis on: Revenue Analytics, Sales Tracking, Dashboard Development, Survey & Insights
+- AI-forward positioning: Claude + Replit as deliberate development methodology, not a buzzword
+- "Apps I've Built" section on Home page showcases 3 AI-engineered full-stack tools with "AI-Engineered" badge
 
 ## Running the Project
 The application runs on port 5000 with `npm run dev`. The Express server handles both API routes and serves the Vite-built frontend.

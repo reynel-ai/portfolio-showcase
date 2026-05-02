@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, BarChart3, LineChart, PieChart, TrendingUp, Users, Globe } from "lucide-react";
+import { ArrowRight, BarChart3, LineChart, PieChart, TrendingUp, Users, Globe, Cpu, Database, GitBranch } from "lucide-react";
 import { motion } from "framer-motion";
 import { projects, skills } from "@/lib/data";
 
@@ -12,22 +12,43 @@ const highlights = [
   {
     icon: BarChart3,
     title: "Revenue Analytics",
-    description: "End-to-end revenue tracking and forecasting systems that drive strategic decisions."
+    description: "End-to-end revenue tracking and forecasting — from raw BigQuery data to executive dashboards, without waiting on engineering."
   },
   {
     icon: LineChart,
     title: "Sales Tracking",
-    description: "Comprehensive sales dashboards providing real-time visibility into performance metrics."
+    description: "Shipping real-time KPI dashboards that give leadership instant visibility into what's driving or dragging performance."
   },
   {
     icon: PieChart,
     title: "Business Intelligence",
-    description: "Transforming complex data into clear, actionable insights for stakeholders."
+    description: "Translating complex, multi-source data into clear, actionable insights stakeholders can act on immediately."
   },
   {
     icon: Users,
     title: "Survey & Insights",
-    description: "Customer research and survey analysis to understand needs and improve satisfaction."
+    description: "Designing and analyzing user surveys to surface friction points and directly inform product and UX decisions."
+  }
+];
+
+const builtApps = [
+  {
+    icon: Database,
+    title: "dbt Model Builder",
+    description: "A web-based development environment for managing a dbt analytics project on Google BigQuery. Features AI-assisted file editing with plain-English descriptions, GitHub-style diffs before applying changes, BigQuery dataset browsing, SQL validation, and a History page tracking pending changes, recent commits, and merged PRs.",
+    stack: ["React", "Vite", "Express", "BigQuery", "dbt", "GitHub Actions", "Replit"]
+  },
+  {
+    icon: BarChart3,
+    title: "Prop Firm Match — Unified Analytics Dashboard",
+    description: "A password-protected React + Express app serving as the analytics command center for PropFirmMatch.com. Pulls live data from BigQuery, PostHog, ActiveCampaign, and Google Sheets. Includes daily/weekly KPIs, email campaign analytics, revenue attribution with last-touch and multi-touch models, and a Futures Prop Survey Dashboard with CSV export.",
+    stack: ["React", "Vite", "Express", "BigQuery", "PostHog", "ActiveCampaign", "Recharts", "TailwindCSS"]
+  },
+  {
+    icon: GitBranch,
+    title: "Prop Firm Intelligence",
+    description: "A full-stack analytics platform that scrapes and analyzes ~235,000 Trustpilot reviews across 54 prop trading firms. Combines a React frontend (KPI cards, scatter plot, sortable firm table, per-firm detail pages) with an Express API backed by PostgreSQL. LLM-powered sentiment analysis surfaces themes per firm, with publication-ready chart exports.",
+    stack: ["React", "Vite", "Express", "PostgreSQL", "Drizzle ORM", "TypeScript", "ScraperAPI"]
   }
 ];
 
@@ -123,6 +144,59 @@ export default function Home() {
                       ))}
                     </div>
                     <p className="text-sm text-primary font-medium line-clamp-2">{project.impact}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex items-end justify-between mb-12 flex-wrap gap-4"
+          >
+            <div>
+              <h2 className="text-3xl font-bold mb-2" data-testid="text-apps-title">Apps I've Built</h2>
+              <p className="text-muted-foreground max-w-2xl">
+                Internal tools engineered with AI (Claude + Replit) — shipped without a dedicated engineering team.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {builtApps.map((app, index) => (
+              <motion.div
+                key={app.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <Card className="h-full hover-elevate transition-all duration-300">
+                  <CardContent className="pt-6 flex flex-col h-full">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="p-2 rounded-md bg-primary/10 flex-shrink-0">
+                        <app.icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <Badge variant="default" className="text-xs flex-shrink-0 bg-primary/20 text-primary border-primary/30 hover:bg-primary/20">
+                        AI-Engineered
+                      </Badge>
+                    </div>
+                    <h3 className="font-semibold text-base mb-2">{app.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 flex-grow">{app.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mt-auto">
+                      {app.stack.map((tech) => (
+                        <Badge key={tech} variant="outline" className="text-xs font-normal">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>

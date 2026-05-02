@@ -10,22 +10,22 @@ const coreAreas = [
   {
     icon: BarChart3,
     title: "Finance & Revenue Analytics",
-    description: "Building systems to track, analyze, and forecast revenue streams with precision."
+    description: "Building end-to-end systems that track, analyze, and forecast revenue — from raw BigQuery data to executive dashboards."
   },
   {
     icon: TrendingUp,
     title: "Sales Performance Tracking",
-    description: "Creating dashboards that provide real-time visibility into sales metrics and KPIs."
+    description: "Shipping dashboards that give real-time visibility into KPIs, without depending on engineering sprints."
   },
   {
     icon: Users,
     title: "User Research & Insights",
-    description: "Conducting user research and analyzing qualitative and quantitative data for product improvements."
+    description: "Running surveys and analyzing qualitative and quantitative data to directly inform product and UX decisions."
   },
   {
     icon: Lightbulb,
-    title: "Dashboard Development",
-    description: "Crafting interactive visualizations and automated dashboard solutions."
+    title: "AI-Leveraged Tool Development",
+    description: "Using Claude and Replit to build internal tools — dbt environments, analytics command centers, intelligence platforms — faster than a traditional dev cycle."
   }
 ];
 
@@ -55,14 +55,15 @@ export default function About() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl font-bold mb-6" data-testid="text-about-title">
-              Turning Complex Data into{" "}
-              <span className="text-gradient">Strategic Advantage</span>
+              Analytics Manager Who Uses AI to{" "}
+              <span className="text-gradient">Build What's Needed</span>
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8" data-testid="text-about-intro">
-              Data analytics leader pioneering the application of AI-driven tools for real world application. 
-              Founder and business idea owner behind automated dashboard solutions that streamline data needs 
-              for startups and growing companies.
+              I treat AI (Claude + Replit) as a force multiplier — shipping internal tools that 
+              would normally require a small engineering team. If a tool would make our team faster 
+              or our data clearer, I build it. AI-assisted development isn't a buzzword in my work; 
+              it's a deliberate methodology.
             </p>
           </motion.div>
 
@@ -84,22 +85,24 @@ export default function About() {
                     <p>
                       Currently serving as <span className="text-foreground font-medium">Analytics Manager</span> at{" "}
                       <span className="text-primary font-medium">Prop Firm Match Global FZCO</span>, I manage 
-                      the full data lifecycle and decision-making engines across finance, marketing, product, 
-                      and development teams while leading cross-functional data initiatives.
+                      the full data lifecycle across finance, marketing, product, and development — and I build 
+                      the tools that power it. My stack includes SQL, BigQuery, dbt, Python, React, TypeScript, 
+                      Node/Express, PostHog, and GA4, with Claude and Replit as core development partners.
                     </p>
                     
                     <p>
-                      My career spans roles at industry leaders including <span className="text-foreground font-medium">Accenture</span>, 
-                      {" "}<span className="text-foreground font-medium">Google Operations Center</span>, 
-                      {" "}<span className="text-foreground font-medium">Airbnb</span>, and 
-                      {" "}<span className="text-foreground font-medium">TDCX</span>, where I've developed expertise 
-                      in user research, marketing analytics, and digital campaign optimization across global markets.
+                      I don't wait for engineering bandwidth. When a tool would make the team faster — a dbt model 
+                      builder, a unified analytics command center, a competitive intelligence platform — I scope 
+                      it, build it, and ship it. The result is internal tooling that would normally require a 
+                      small dedicated engineering team.
                     </p>
                     
                     <p>
-                      I specialize in designing and optimizing tracking systems using Google Tag Manager and GA4, 
-                      conducting performance evaluation of digital campaigns, and translating analytical findings 
-                      into actionable business strategies.
+                      My career spans roles at <span className="text-foreground font-medium">Accenture</span>,{" "}
+                      <span className="text-foreground font-medium">Google Operations Center</span>,{" "}
+                      <span className="text-foreground font-medium">Airbnb</span>, and{" "}
+                      <span className="text-foreground font-medium">TDCX</span>, building deep expertise in user 
+                      research, marketing analytics, and digital campaign optimization across global markets.
                     </p>
                   </div>
                 </CardContent>
@@ -186,16 +189,18 @@ export default function About() {
                   <Badge variant="secondary" className="mb-4">Current Focus</Badge>
                   <h2 className="text-2xl font-bold mb-4">Prop Firm Match Global FZCO</h2>
                   <p className="text-muted-foreground mb-6">
-                    Leading the full analytics lifecycle from data collection and management to analysis and reporting. 
-                    Developing data-driven dashboards and insights to guide strategic decisions across marketing, 
-                    product, and operations while partnering with cross-functional teams.
+                    Managing the full analytics lifecycle while building the tools that make it possible. 
+                    From data collection to executive reporting — and the internal apps in between — using 
+                    SQL, BigQuery, dbt, React, TypeScript, and AI-assisted development to move faster 
+                    than a traditional analytics function ever could.
                   </p>
                   <div className="flex flex-wrap justify-center gap-2">
                     <Badge>Revenue Analytics</Badge>
                     <Badge>Sales Tracking</Badge>
+                    <Badge>AI-Assisted Development</Badge>
                     <Badge>Dashboard Development</Badge>
                     <Badge>GA4 & GTM</Badge>
-                    <Badge>Conversion Optimization</Badge>
+                    <Badge>dbt + BigQuery</Badge>
                   </div>
                 </div>
               </CardContent>

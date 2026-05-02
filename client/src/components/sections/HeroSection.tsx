@@ -34,13 +34,14 @@ export function HeroSection() {
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-800 dark:text-muted-foreground mb-4 font-semibold" data-testid="text-hero-headline">
-            Transforming Data Into Decisions That Drive Growth
+            Analytics Manager Who Builds the Tools, Not Just the Reports
           </p>
 
           <p className="text-lg text-gray-700 dark:text-muted-foreground mb-8 max-w-2xl font-medium" data-testid="text-hero-description">
-            Developing automated dashboard solutions that streamline data needs for startups 
-            and growing companies. Currently managing the full data lifecycle across finance, 
-            marketing, product, and development at <span className="text-primary font-semibold">Prop Firm Match Global FZCO</span>.
+            I use AI (Claude + Replit) as a development partner to ship internal tools that would 
+            normally require an engineering team — without waiting for one. Currently managing the 
+            full data lifecycle at <span className="text-primary font-semibold">Prop Firm Match Global FZCO</span>, 
+            across finance, marketing, product, and development.
           </p>
 
           <div className="flex flex-wrap gap-4">
