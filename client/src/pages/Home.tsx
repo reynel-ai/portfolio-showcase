@@ -4,9 +4,13 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, BarChart3, LineChart, PieChart, TrendingUp, Users, Globe, Cpu, Database, GitBranch } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, BarChart3, LineChart, PieChart, TrendingUp, Users, Globe, Database, GitBranch, Eye, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { projects, skills } from "@/lib/data";
+import snapshotDbt from "@assets/image_1777737903632.png";
+import snapshotPfmDash from "@assets/image_1777737830658.png";
+import snapshotPfi from "@assets/image_1777737838615.png";
 
 const highlights = [
   {
@@ -36,19 +40,22 @@ const builtApps = [
     icon: Database,
     title: "dbt Model Builder",
     description: "A web-based development environment for managing a dbt analytics project on Google BigQuery. Features AI-assisted file editing with plain-English descriptions, GitHub-style diffs before applying changes, BigQuery dataset browsing, SQL validation, and a History page tracking pending changes, recent commits, and merged PRs.",
-    stack: ["React", "Vite", "Express", "BigQuery", "dbt", "GitHub Actions", "Replit"]
+    stack: ["React", "Vite", "Express", "BigQuery", "dbt", "GitHub Actions", "Replit"],
+    snapshot: snapshotDbt
   },
   {
     icon: BarChart3,
     title: "Prop Firm Match — Unified Analytics Dashboard",
     description: "A password-protected React + Express app serving as the analytics command center for PropFirmMatch.com. Pulls live data from BigQuery, PostHog, ActiveCampaign, and Google Sheets. Includes daily/weekly KPIs, email campaign analytics, revenue attribution with last-touch and multi-touch models, and a Futures Prop Survey Dashboard with CSV export.",
-    stack: ["React", "Vite", "Express", "BigQuery", "PostHog", "ActiveCampaign", "Recharts", "TailwindCSS"]
+    stack: ["React", "Vite", "Express", "BigQuery", "PostHog", "ActiveCampaign", "Recharts", "TailwindCSS"],
+    snapshot: snapshotPfmDash
   },
   {
     icon: GitBranch,
     title: "Prop Firm Intelligence",
     description: "A full-stack analytics platform that scrapes and analyzes ~235,000 Trustpilot reviews across 54 prop trading firms. Combines a React frontend (KPI cards, scatter plot, sortable firm table, per-firm detail pages) with an Express API backed by PostgreSQL. LLM-powered sentiment analysis surfaces themes per firm, with publication-ready chart exports.",
-    stack: ["React", "Vite", "Express", "PostgreSQL", "Drizzle ORM", "TypeScript", "ScraperAPI"]
+    stack: ["React", "Vite", "Express", "PostgreSQL", "Drizzle ORM", "TypeScript", "ScraperAPI"],
+    snapshot: snapshotPfi
   }
 ];
 
@@ -56,6 +63,7 @@ export default function Home() {
   const featuredProjects = projects.slice(0, 3);
   const dataSkills = skills.filter(s => s.category === "data").slice(0, 6);
   const toolSkills = skills.filter(s => s.category === "tools");
+  const [activeSnapshot, setActiveSnapshot] = useState<{ title: string; src: string } | null>(null);
 
   return (
     <Layout>
@@ -190,13 +198,21 @@ export default function Home() {
                     </div>
                     <h3 className="font-semibold text-base mb-2">{app.title}</h3>
                     <p className="text-sm text-muted-foreground mb-4 flex-grow">{app.description}</p>
-                    <div className="flex flex-wrap gap-1.5 mt-auto">
+                    <div className="flex flex-wrap gap-1.5 mb-4">
                       {app.stack.map((tech) => (
                         <Badge key={tech} variant="outline" className="text-xs font-normal">
                           {tech}
                         </Badge>
                       ))}
                     </div>
+                    <button
+                      onClick={() => setActiveSnapshot({ title: app.title, src: app.snapshot })}
+                      className="flex items-center gap-1.5 text-xs text-primary font-medium hover:underline w-fit mt-auto"
+                      data-testid={`button-snapshot-${index}`}
+                    >
+                      <Eye className="h-3.5 w-3.5" />
+                      Check Snapshot
+                    </button>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -300,6 +316,44 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <AnimatePresence>
+        {activeSnapshot && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            onClick={() => setActiveSnapshot(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-5xl w-full bg-background rounded-xl shadow-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+                <span className="font-semibold text-sm truncate">{activeSnapshot.title}</span>
+                <button
+                  onClick={() => setActiveSnapshot(null)}
+                  className="p-1 rounded-md hover:bg-muted transition-colors flex-shrink-0"
+                  data-testid="button-close-snapshot"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+              <img
+                src={activeSnapshot.src}
+                alt={`${activeSnapshot.title} snapshot`}
+                className="w-full h-auto max-h-[80vh] object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 }
