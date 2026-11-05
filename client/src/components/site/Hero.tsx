@@ -94,7 +94,6 @@ function Deck() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [start, setStart] = useState(0);
   const [paused, setPaused] = useState(Boolean(reduce));
-  const [pointerInside, setPointerInside] = useState(false);
   const [focusWithin, setFocusWithin] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
   const [inView, setInView] = useState(true);
@@ -118,11 +117,11 @@ function Deck() {
     return () => observer.disconnect();
   }, []);
 
-  const shouldPlay = !paused && !pointerInside && !focusWithin && pageVisible && inView;
+  const shouldPlay = !paused && !focusWithin && pageVisible && inView;
   useEffect(() => {
     if (!shouldPlay || previewSlides.length < 2) return;
     const timer = window.setInterval(
-      () => setStart((current) => (current + 1) % previewSlides.length),
+      () => setStart((current) => (current - 1 + previewSlides.length) % previewSlides.length),
       1200,
     );
     return () => window.clearInterval(timer);
@@ -135,8 +134,6 @@ function Deck() {
     paused,
     onToggle: () => setPaused((value) => !value),
     containerRef,
-    onPointerEnter: () => setPointerInside(true),
-    onPointerLeave: () => setPointerInside(false),
     onFocusCapture: () => setFocusWithin(true),
     onBlurCapture: (event: FocusEvent<HTMLDivElement>) => {
       if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocusWithin(false);
@@ -147,15 +144,13 @@ function Deck() {
   return <DeckSpread {...sharedProps} />;
 }
 
-/** Mobile and reduced-motion version: a plain row of builds. */
+/** Mobile and reduced-motion version: a horizontally scrollable row. */
 type DeckProps = {
   slides: PreviewSlide[];
   reduce: boolean;
   paused: boolean;
   onToggle: () => void;
   containerRef: RefObject<HTMLDivElement>;
-  onPointerEnter: () => void;
-  onPointerLeave: () => void;
   onFocusCapture: () => void;
   onBlurCapture: (event: FocusEvent<HTMLDivElement>) => void;
 };
@@ -168,15 +163,25 @@ function DeckRow({ slides, reduce, paused, onToggle, containerRef, ...interactio
         className="flex snap-x snap-mandatory scroll-px-[clamp(1.25rem,4vw,2.5rem)] gap-4 overflow-x-auto px-[clamp(1.25rem,4vw,2.5rem)] pb-4 [scrollbar-width:none] min-[900px]:wrap min-[900px]:grid min-[900px]:grid-cols-5 min-[900px]:overflow-visible"
         aria-label="Project image previews"
       >
-        {slides.map((slide, index) => (
-          <li key={`preview-slot-${index}`} className="w-[78vw] max-w-[22rem] shrink-0 snap-start min-[900px]:w-auto min-[900px]:max-w-none">
-            <Link href={`/work#${slide.build.id}`} className="group block" aria-label={`${slide.build.title}: ${slide.shot.alt}`}>
-              <DeckPreviewImage slide={slide} reduce={reduce} />
-              <p className="mt-3 font-semibold tracking-[-0.01em] group-hover:text-primary">{slide.build.title}</p>
-              <p className="text-sm text-muted-foreground">{slide.build.context}</p>
-            </Link>
-          </li>
-        ))}
+        <AnimatePresence initial={false} mode="popLayout">
+          {slides.map((slide) => (
+            <motion.li
+              key={slide.key}
+              layout={!reduce}
+              initial={reduce ? { opacity: 0 } : { opacity: 0, x: -32 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={reduce ? { opacity: 0 } : { opacity: 0, x: 32 }}
+              transition={{ duration: reduce ? 0.16 : 0.5, ease, layout: { duration: reduce ? 0 : 0.55, ease } }}
+              className="w-[78vw] max-w-[22rem] shrink-0 snap-start min-[900px]:w-auto min-[900px]:max-w-none"
+            >
+              <Link href={`/work#${slide.build.id}`} className="group block" aria-label={`${slide.build.title}: ${slide.shot.alt}`}>
+                <DeckPreviewImage slide={slide} />
+                <p className="mt-3 font-semibold tracking-[-0.01em] group-hover:text-primary">{slide.build.title}</p>
+                <p className="text-sm text-muted-foreground">{slide.build.context}</p>
+              </Link>
+            </motion.li>
+          ))}
+        </AnimatePresence>
       </ul>
     </div>
   );
@@ -199,17 +204,19 @@ function DeckSpread({ slides, reduce, paused, onToggle, containerRef, ...interac
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease, delay: 0.55 }}
         >
-          <motion.div className="relative" style={{ top }} role="list" aria-label="Selected builds">
-            {slides.map((slide, i) => (
-              <DeckCard
-                key={`preview-slot-${i}`}
-                slide={slide}
-                offset={i - (slides.length - 1) / 2}
-                progress={progress}
-                labels={labels}
-                reduce={reduce}
-              />
-            ))}
+          <motion.div className="relative" style={{ top }} role="list" aria-label="Project image previews">
+            <AnimatePresence initial={false}>
+              {slides.map((slide, i) => (
+                <DeckCard
+                  key={slide.key}
+                  slide={slide}
+                  offset={i - (slides.length - 1) / 2}
+                  progress={progress}
+                  labels={labels}
+                  reduce={reduce}
+                />
+              ))}
+            </AnimatePresence>
           </motion.div>
           <PreviewToggle paused={paused} onToggle={onToggle} className="absolute bottom-6 left-0 z-20" />
         </motion.div>
@@ -250,13 +257,17 @@ function DeckCard({
   return (
     <motion.div
       role="listitem"
+      layout={!reduce}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, x: -40 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={reduce ? { opacity: 0 } : { opacity: 0, x: 40 }}
+      transition={{ duration: reduce ? 0.16 : 0.5, ease, layout: { duration: reduce ? 0 : 0.55, ease } }}
       className="absolute top-0"
       style={{ left, width, y, rotate, scale, zIndex: 10 - depth, transformOrigin: "50% 100%" }}
     >
       <Link href={`/work#${slide.build.id}`} className="group block" aria-label={`${slide.build.title}: ${slide.shot.alt}`}>
         <DeckPreviewImage
           slide={slide}
-          reduce={reduce}
           className="transition-[border-color] duration-300 group-hover:border-primary/60"
         />
         <motion.div style={{ opacity: labels }} className="mt-3">
@@ -272,29 +283,14 @@ function DeckCard({
 
 function DeckPreviewImage({
   slide,
-  reduce,
   className = "",
 }: {
   slide: PreviewSlide;
-  reduce: boolean;
   className?: string;
 }) {
   return (
-    <div className={`shot aspect-[16/10] [perspective:1000px] ${className}`}>
-      <AnimatePresence initial={false} mode="wait">
-        <motion.img
-          key={slide.key}
-          src={slide.shot.src}
-          alt={slide.shot.alt}
-          loading="lazy"
-          decoding="async"
-          initial={reduce ? { opacity: 0 } : { opacity: 0, rotateY: 85 }}
-          animate={{ opacity: 1, rotateY: 0 }}
-          exit={reduce ? { opacity: 0 } : { opacity: 0, rotateY: -85 }}
-          transition={{ duration: reduce ? 0.16 : 0.34, ease }}
-          style={{ backfaceVisibility: "hidden" }}
-        />
-      </AnimatePresence>
+    <div className={`shot aspect-[16/10] ${className}`}>
+      <img src={slide.shot.src} alt={slide.shot.alt} loading="lazy" decoding="async" />
     </div>
   );
 }
