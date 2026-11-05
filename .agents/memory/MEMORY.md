@@ -1,0 +1,1 @@
+- [Contact API privacy](contact-api-privacy.md) — keep public contact submissions write-only unless an authenticated admin path is added.
