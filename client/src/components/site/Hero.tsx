@@ -1,6 +1,8 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState, type FocusEvent, type RefObject } from "react";
 import { Link } from "wouter";
+import { Pause, Play } from "lucide-react";
 import {
+  AnimatePresence,
   motion,
   useReducedMotion,
   useScroll,
@@ -17,10 +19,28 @@ const ease = [0.23, 1, 0.32, 1] as const;
 
 const headline = ["I build the systems", "that turn raw data", "into decisions."];
 
-const deckIds = ["unified-dashboard", "central-intelligence", "prestige-pulse", "mission-control", "prop-monitor"];
-const deck = deckIds
-  .map((id) => builds.find((b) => b.id === id))
-  .filter((b): b is (typeof builds)[number] => !!b && b.shots.length > 0);
+type PreviewSlide = {
+  key: string;
+  build: (typeof builds)[number];
+  shot: (typeof builds)[number]["shots"][number];
+};
+
+const previewSlides: PreviewSlide[] = [
+  ...builds.flatMap((build) =>
+    build.shots.slice(0, 1).map((shot, index) => ({ key: `${build.id}-${index}`, build, shot })),
+  ),
+  ...builds.flatMap((build) =>
+    build.shots.slice(1).map((shot, index) => ({ key: `${build.id}-${index + 1}`, build, shot })),
+  ),
+];
+const PREVIEW_CARD_COUNT = 5;
+
+function slidesAt(start: number) {
+  return Array.from(
+    { length: Math.min(PREVIEW_CARD_COUNT, previewSlides.length) },
+    (_, position) => previewSlides[(start + position) % previewSlides.length],
+  );
+}
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -71,27 +91,89 @@ export function Hero() {
 function Deck() {
   const reduce = useReducedMotion();
   const wide = useMedia("(min-width: 900px)", true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [start, setStart] = useState(0);
+  const [paused, setPaused] = useState(Boolean(reduce));
+  const [pointerInside, setPointerInside] = useState(false);
+  const [focusWithin, setFocusWithin] = useState(false);
+  const [pageVisible, setPageVisible] = useState(true);
+  const [inView, setInView] = useState(true);
 
-  if (reduce || !wide) return <DeckRow />;
-  return <DeckSpread />;
+  useEffect(() => {
+    if (reduce) setPaused(true);
+  }, [reduce]);
+
+  useEffect(() => {
+    const updateVisibility = () => setPageVisible(document.visibilityState === "visible");
+    updateVisibility();
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () => document.removeEventListener("visibilitychange", updateVisibility);
+  }, []);
+
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  const shouldPlay = !paused && !pointerInside && !focusWithin && pageVisible && inView;
+  useEffect(() => {
+    if (!shouldPlay || previewSlides.length < 2) return;
+    const timer = window.setInterval(
+      () => setStart((current) => (current + 1) % previewSlides.length),
+      1200,
+    );
+    return () => window.clearInterval(timer);
+  }, [shouldPlay]);
+
+  const slides = slidesAt(start);
+  const sharedProps = {
+    slides,
+    reduce: Boolean(reduce),
+    paused,
+    onToggle: () => setPaused((value) => !value),
+    containerRef,
+    onPointerEnter: () => setPointerInside(true),
+    onPointerLeave: () => setPointerInside(false),
+    onFocusCapture: () => setFocusWithin(true),
+    onBlurCapture: (event: FocusEvent<HTMLDivElement>) => {
+      if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocusWithin(false);
+    },
+  };
+
+  if (reduce || !wide) return <DeckRow {...sharedProps} />;
+  return <DeckSpread {...sharedProps} />;
 }
 
 /** Mobile and reduced-motion version: a plain row of builds. */
-function DeckRow() {
+type DeckProps = {
+  slides: PreviewSlide[];
+  reduce: boolean;
+  paused: boolean;
+  onToggle: () => void;
+  containerRef: RefObject<HTMLDivElement>;
+  onPointerEnter: () => void;
+  onPointerLeave: () => void;
+  onFocusCapture: () => void;
+  onBlurCapture: (event: FocusEvent<HTMLDivElement>) => void;
+};
+
+function DeckRow({ slides, reduce, paused, onToggle, containerRef, ...interactionProps }: DeckProps) {
   return (
-    <div className="mt-14 min-[900px]:pb-32">
+    <div ref={containerRef} className="relative mt-14 min-[900px]:pb-32" {...interactionProps}>
+      <PreviewToggle paused={paused} onToggle={onToggle} className="absolute -top-12 right-[clamp(1.25rem,4vw,2.5rem)] z-10" />
       <ul
         className="flex snap-x snap-mandatory scroll-px-[clamp(1.25rem,4vw,2.5rem)] gap-4 overflow-x-auto px-[clamp(1.25rem,4vw,2.5rem)] pb-4 [scrollbar-width:none] min-[900px]:wrap min-[900px]:grid min-[900px]:grid-cols-5 min-[900px]:overflow-visible"
-        aria-label="Selected builds"
+        aria-label="Project image previews"
       >
-        {deck.map((b) => (
-          <li key={b.id} className="w-[78vw] max-w-[22rem] shrink-0 snap-start min-[900px]:w-auto min-[900px]:max-w-none">
-            <Link href={`/work#${b.id}`} className="group block">
-              <div className="shot aspect-[16/10]">
-                <img src={b.shots[0].src} alt={b.shots[0].alt} loading="lazy" />
-              </div>
-              <p className="mt-3 font-semibold tracking-[-0.01em] group-hover:text-primary">{b.title}</p>
-              <p className="text-sm text-muted-foreground">{b.context}</p>
+        {slides.map((slide, index) => (
+          <li key={`preview-slot-${index}`} className="w-[78vw] max-w-[22rem] shrink-0 snap-start min-[900px]:w-auto min-[900px]:max-w-none">
+            <Link href={`/work#${slide.build.id}`} className="group block" aria-label={`${slide.build.title}: ${slide.shot.alt}`}>
+              <DeckPreviewImage slide={slide} reduce={reduce} />
+              <p className="mt-3 font-semibold tracking-[-0.01em] group-hover:text-primary">{slide.build.title}</p>
+              <p className="text-sm text-muted-foreground">{slide.build.context}</p>
             </Link>
           </li>
         ))}
@@ -101,16 +183,15 @@ function DeckRow() {
 }
 
 /** Desktop: a stacked deck that pins and deals itself into a row as you scroll. */
-function DeckSpread() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.45", "end end"] });
+function DeckSpread({ slides, reduce, paused, onToggle, containerRef, ...interactionProps }: DeckProps) {
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start 0.45", "end end"] });
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.6 });
   const labels = useTransform(progress, [0.75, 1], [0, 1]);
   // Stacked deck sits high so it peeks into the first screen; the finished row settles mid-screen.
   const top = useTransform(progress, [0, 1], ["9vh", "40vh"]);
 
   return (
-    <div ref={ref} className="relative mt-12 h-[175vh]">
+    <div ref={containerRef} className="relative mt-12 h-[175vh]" {...interactionProps}>
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div
           className="wrap relative h-full"
@@ -119,16 +200,18 @@ function DeckSpread() {
           transition={{ duration: 1.1, ease, delay: 0.55 }}
         >
           <motion.div className="relative" style={{ top }} role="list" aria-label="Selected builds">
-            {deck.map((b, i) => (
+            {slides.map((slide, i) => (
               <DeckCard
-                key={b.id}
-                build={b}
-                offset={i - (deck.length - 1) / 2}
+                key={`preview-slot-${i}`}
+                slide={slide}
+                offset={i - (slides.length - 1) / 2}
                 progress={progress}
                 labels={labels}
+                reduce={reduce}
               />
             ))}
           </motion.div>
+          <PreviewToggle paused={paused} onToggle={onToggle} className="absolute bottom-6 left-0 z-20" />
         </motion.div>
       </div>
     </div>
@@ -140,15 +223,17 @@ const ROW_W = 18;
 const ROW_STEP = 20.5;
 
 function DeckCard({
-  build,
+  slide,
   offset,
   progress,
   labels,
+  reduce,
 }: {
-  build: (typeof builds)[number];
+  slide: PreviewSlide;
   offset: number;
   progress: MotionValue<number>;
   labels: MotionValue<number>;
+  reduce: boolean;
 }) {
   const depth = Math.abs(offset);
   // Positions are in % of the content width, so the row never spills past the page edge.
@@ -168,17 +253,71 @@ function DeckCard({
       className="absolute top-0"
       style={{ left, width, y, rotate, scale, zIndex: 10 - depth, transformOrigin: "50% 100%" }}
     >
-      <Link href={`/work#${build.id}`} className="group block" aria-label={`${build.title}, ${build.context}`}>
-        <div className="shot aspect-[16/10] transition-[border-color] duration-300 group-hover:border-primary/60">
-          <img src={build.shots[0].src} alt={build.shots[0].alt} decoding="async" />
-        </div>
+      <Link href={`/work#${slide.build.id}`} className="group block" aria-label={`${slide.build.title}: ${slide.shot.alt}`}>
+        <DeckPreviewImage
+          slide={slide}
+          reduce={reduce}
+          className="transition-[border-color] duration-300 group-hover:border-primary/60"
+        />
         <motion.div style={{ opacity: labels }} className="mt-3">
           <p className="truncate font-semibold tracking-[-0.01em] transition-colors group-hover:text-primary">
-            {build.title}
+            {slide.build.title}
           </p>
-          <p className="truncate text-sm text-muted-foreground">{build.context}</p>
+          <p className="truncate text-sm text-muted-foreground">{slide.build.context}</p>
         </motion.div>
       </Link>
     </motion.div>
+  );
+}
+
+function DeckPreviewImage({
+  slide,
+  reduce,
+  className = "",
+}: {
+  slide: PreviewSlide;
+  reduce: boolean;
+  className?: string;
+}) {
+  return (
+    <div className={`shot aspect-[16/10] [perspective:1000px] ${className}`}>
+      <AnimatePresence initial={false} mode="wait">
+        <motion.img
+          key={slide.key}
+          src={slide.shot.src}
+          alt={slide.shot.alt}
+          loading="lazy"
+          decoding="async"
+          initial={reduce ? { opacity: 0 } : { opacity: 0, rotateY: 85 }}
+          animate={{ opacity: 1, rotateY: 0 }}
+          exit={reduce ? { opacity: 0 } : { opacity: 0, rotateY: -85 }}
+          transition={{ duration: reduce ? 0.16 : 0.34, ease }}
+          style={{ backfaceVisibility: "hidden" }}
+        />
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function PreviewToggle({
+  paused,
+  onToggle,
+  className = "",
+}: {
+  paused: boolean;
+  onToggle: () => void;
+  className?: string;
+}) {
+  const Icon = paused ? Play : Pause;
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={paused ? "Play project previews" : "Pause project previews"}
+      aria-pressed={!paused}
+      className={`press grid h-11 w-11 place-items-center rounded-full border border-border bg-background/85 text-foreground shadow-sm backdrop-blur transition-colors hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${className}`}
+    >
+      <Icon className="h-4 w-4" aria-hidden />
+    </button>
   );
 }

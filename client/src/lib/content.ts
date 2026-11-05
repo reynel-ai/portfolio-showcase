@@ -7,11 +7,13 @@ import paidAds from "@/assets/builds/paid-ads.webp";
 import unifiedDashboard from "@/assets/builds/unified-dashboard.webp";
 import missionControl from "@/assets/builds/mission-control.webp";
 import earningsHub from "@/assets/builds/earnings-hub.webp";
+import earningsHubDataRefresh from "@/assets/builds/earnings-hub-data-refresh.png";
 import dbtModelBuilder from "@/assets/builds/dbt-model-builder.webp";
 import dbtModelBuilder2 from "@/assets/builds/dbt-model-builder-2.webp";
 import reviewAnalytics from "@/assets/builds/review-analytics.webp";
 import reviewAnalytics2 from "@/assets/builds/review-analytics-2.webp";
 import propMonitor from "@/assets/builds/prop-monitor.webp";
+import ibCrmOverview from "@/assets/builds/ib-crm-overview.png";
 
 // Report and dashboard images are loaded by folder so adding one is a file drop.
 const reportFiles = import.meta.glob("@/assets/reports/*.webp", {
@@ -104,7 +106,10 @@ export const builds: Build[] = [
     summary:
       "Turns earnings from many Google Sheets into one clean dataset. Maps columns, matches each record to its firm, checks every import, and serves the result to Airbyte through an API.",
     stack: ["TypeScript", "React", "Express", "PostgreSQL", "Airbyte", "BigQuery"],
-    shots: [{ src: earningsHub, alt: "Earnings Hub sources overview" }],
+    shots: [
+      { src: earningsHub, alt: "Earnings Hub sources overview" },
+      { src: earningsHubDataRefresh, alt: "Earnings Hub data refresh and source sync overview" },
+    ],
   },
   {
     id: "dbt-model-builder",
@@ -160,7 +165,7 @@ export const builds: Build[] = [
   },
   {
     id: "ib-crm",
-    title: "IB Portal on Twenty",
+    title: "Introducing Broker CRM",
     context: "Client work",
     group: "Client work",
     summary:
@@ -169,8 +174,7 @@ export const builds: Build[] = [
     stack: ["Twenty CRM", "React", "TypeScript", "Replit"],
     status: "Live demo",
     link: { href: "https://ib-crm-on-twenty.replit.app/", label: "Open the live demo" },
-    // Add a screenshot later: drop it in client/src/assets/builds/ and import it above.
-    shots: [],
+    shots: [{ src: ibCrmOverview, alt: "Introducing Broker CRM dashboard overview" }],
   },
 ];
 

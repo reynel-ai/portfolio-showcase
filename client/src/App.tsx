@@ -6,6 +6,7 @@ import { queryClient } from "./lib/queryClient";
 import Home from "@/pages/Home";
 import Work from "@/pages/Work";
 import NotFound from "@/pages/not-found";
+import { BackToTop } from "@/components/site/BackToTop";
 
 /** Start each new page at the top unless the URL points at a section. */
 function ScrollReset() {
@@ -39,6 +40,7 @@ export default function App() {
       <MotionConfig reducedMotion="user">
         <ScrollReset />
         <Router />
+        <BackToTop />
       </MotionConfig>
     </QueryClientProvider>
   );
