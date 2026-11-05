@@ -6,7 +6,10 @@ import { ZodError } from "zod";
 import { fromError } from "zod-validation-error";
 import { getUncachableResendClient } from "./resend";
 
-const CONTACT_EMAIL = "ibecomewhaithink@gmail.com";
+const CONTACT_EMAIL = "ibecomewhatithink@gmail.com";
+
+const escapeHtml = (v: string) =>
+  v.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
 export async function registerRoutes(
   httpServer: Server,
@@ -23,14 +26,15 @@ export async function registerRoutes(
         await client.emails.send({
           from: fromEmail || 'Portfolio Contact <onboarding@resend.dev>',
           to: CONTACT_EMAIL,
-          subject: `Portfolio Contact: ${validatedData.subject}`,
+          subject: `Portfolio contact: ${validatedData.subject}`,
+          replyTo: validatedData.email,
           html: `
             <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${validatedData.name}</p>
-            <p><strong>Email:</strong> ${validatedData.email}</p>
-            <p><strong>Subject:</strong> ${validatedData.subject}</p>
+            <p><strong>Name:</strong> ${escapeHtml(validatedData.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(validatedData.email)}</p>
+            <p><strong>Subject:</strong> ${escapeHtml(validatedData.subject)}</p>
             <p><strong>Message:</strong></p>
-            <p>${validatedData.message.replace(/\n/g, '<br>')}</p>
+            <p>${escapeHtml(validatedData.message).replace(/\n/g, '<br>')}</p>
           `,
         });
       } catch (emailError) {

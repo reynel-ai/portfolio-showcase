@@ -35,7 +35,8 @@
   --popover-foreground: 215 25% 15%;
   --popover-border: 210 30% 88%;
 
-  --primary: 205 85% 45%;
+  /* Original brand blue is 205 85% 45%; 41% keeps the same hue but passes WCAG AA for white text */
+  --primary: 205 85% 41%;
   --primary-foreground: 0 0% 100%;
 
   --secondary: 210 25% 93%;
@@ -51,16 +52,16 @@
   --destructive-foreground: 0 0% 100%;
 
   --input: 210 30% 85%;
-  --ring: 205 85% 45%;
+  --ring: 205 85% 41%;
   --chart-1: 205 85% 45%;
   --chart-2: 180 60% 45%;
   --chart-3: 230 70% 55%;
   --chart-4: 160 55% 45%;
   --chart-5: 250 60% 55%;
 
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', ui-sans-serif, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif;
   --font-serif: Georgia, serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --radius: .5rem;
   --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.03);
   --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.05);
@@ -170,6 +171,10 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
 }
 
@@ -243,11 +248,101 @@
     inset: -1px;
   }
 
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent;
-  }
 
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }
 }
+
+/* ---------- reynel.pro design layer ---------- */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --shot-bg: 215 30% 9%;
+  --ink-shadow: 215 40% 20%;
+  color-scheme: light;
+}
+.dark {
+  --ink-shadow: 215 60% 2%;
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-feature-settings: "ss01" on;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  ::selection { background: hsl(var(--primary) / 0.22); color: hsl(var(--foreground)); }
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  a { text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+  html { scrollbar-color: hsl(var(--muted-foreground) / 0.35) transparent; scrollbar-width: thin; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.3); border-radius: 999px; border: 3px solid hsl(var(--background)); }
+  ::-webkit-scrollbar-track { background: transparent; }
+}
+
+@layer components {
+  .wrap { width: 100%; max-width: 78rem; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 2.5rem); }
+
+  .display {
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    font-size: clamp(2.75rem, 7.4vw, 6rem);
+  }
+  .h-section {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+  }
+  .lede { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.55; color: hsl(var(--muted-foreground)); max-width: 56ch; }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* Screenshot frame: the work is the hero of every section */
+  .shot {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background: hsl(var(--shot-bg));
+    border: 1px solid hsl(var(--border));
+    box-shadow:
+      0 1px 2px hsl(var(--ink-shadow) / 0.08),
+      0 18px 40px -18px hsl(var(--ink-shadow) / 0.35);
+  }
+  .shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+
+  /* Pressable feedback (Emil): instant, subtle */
+  .press { transition: transform 160ms var(--ease-out), background-color 200ms ease, color 200ms ease, border-color 200ms ease; }
+  .press:active { transform: scale(0.97); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    height: 3rem; padding-inline: 1.375rem; border-radius: 999px;
+    font-weight: 600; font-size: 0.975rem; white-space: nowrap;
+  }
+  .btn-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .btn-primary:hover { background: hsl(var(--primary) / 0.9); }
+  .btn-quiet { color: hsl(var(--foreground)); border: 1px solid hsl(var(--border)); }
+  .btn-quiet:hover { border-color: hsl(var(--foreground) / 0.4); }
+
+  .link-ink { color: hsl(var(--foreground)); text-decoration: underline; text-decoration-color: hsl(var(--border)); transition: text-decoration-color 200ms ease, color 200ms ease; }
+  .link-ink:hover { text-decoration-color: hsl(var(--primary)); color: hsl(var(--primary)); }
+
+  .rule { border-top: 1px solid hsl(var(--border)); }
+}
+
+/* Decrypting headline: each slot is sized by its final letter, the glyph floats on top */
+.decrypt-slot { position: relative; display: inline-block; }
+.decrypt-sizer { visibility: hidden; }
+.decrypt-glyph { position: absolute; inset: 0; text-align: center; }
+.decrypt-glyph.is-noise { color: hsl(var(--primary)); opacity: 0.85; }
+.decrypt-line { cursor: default; }

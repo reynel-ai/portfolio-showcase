@@ -2,18 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <meta name="description" content="Reynel Elerio - Data Scientist & Analytics Manager specializing in revenue analytics, sales tracking, and business intelligence. Turning data into revenue-driving decisions." />
-    <meta name="keywords" content="Data Scientist, Analytics Manager, Business Intelligence, Revenue Analytics, Dashboard Development, Prop Firm Match" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Reynel Elerio — Analytics and AI engineering</title>
+    <meta name="description" content="Reynel Elerio builds the systems, analysis and logic that turn raw data into decisions: dashboards, data pipelines, monitoring tools and AI agents for the prop trading industry." />
     <meta name="author" content="Reynel Elerio" />
-    <meta property="og:title" content="Reynel Elerio - Data Scientist & Analytics Manager" />
-    <meta property="og:description" content="Turning data into revenue-driving decisions. Expert in analytics, dashboard development, and business intelligence." />
+    <meta property="og:title" content="Reynel Elerio — Analytics and AI engineering" />
+    <meta property="og:description" content="Dashboards, data pipelines, monitoring tools and AI agents for prop trading research, reporting and decisions." />
     <meta property="og:type" content="website" />
-    <title>Reynel Elerio | Data Scientist & Analytics Manager</title>
+    <meta property="og:url" content="https://reynel.pro" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#f7f9fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1319" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <script>
+      // Follow the visitor's system theme unless they picked one with the toggle.
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.classList.toggle("dark", dark);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
